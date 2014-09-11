@@ -1,0 +1,16 @@
+!!! 5
+%html
+  %head
+    %title
+      = "20dots #{yield(:title)}"
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    = render 'layouts/sidebar'
+    - flash.each do |message_type, message|        
+      %div{:class => "alert alert-#{message_type}"}
+        = message
+    = yield
+    // = debug(params) if Rails.env.development?

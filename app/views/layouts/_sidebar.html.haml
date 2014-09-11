@@ -1,0 +1,16 @@
+#sidebar
+  = image_tag("face_circle.jpg", class: "animated bounceInLeft", id: "face_circle")
+  
+  #about Hi, I'm Justin.
+
+  #about_para
+    I occasionally publish my thoughts here. Sometimes I <a href="https://soundcloud.com/arsvita" class="link">make music</a>. I'm a full stack web developer. Check out my <a href="https://fbmusicgate.com/lp/?r=20dots" class="link">latest project</a>.
+
+  .button_container
+    %a.sidebar_button{:href => "/about"} about me
+
+  .button_container
+    %a.sidebar_button{:id => "contact_button", :href => "/"} contact
+
+  .button_container
+    %a.sidebar_button{:href => "/"} all posts
