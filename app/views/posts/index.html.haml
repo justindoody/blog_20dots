@@ -1,0 +1,11 @@
+#all_posts
+  %ul.flip
+    - @posts.each do |post|
+      %li
+        %a.post_container{:href => "posts/" << post.title.gsub(" ", "-"), :id => post.cover_photo}  
+          .draft 
+            Draft
+          .post_title
+            .date 
+              = post.created_at.strftime("%B %d, %Y")
+            = post.title
