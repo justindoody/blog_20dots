@@ -14,19 +14,29 @@
       #post_height
         .date
           = @post.created_at.strftime("%B %d, %Y")
-        #post_title{:contenteditable => "true"}
+        #post_title_t{:contenteditable => "true"}
           = @post.title
+            
 
 = render 'layouts/sidebar'
 
-#content
+#content{:data => {:controller => "edit"}}
   #post_actions
     - if @post.draft
       = link_to "Publish", publish_post_path(@post), class: "pure-button button-success"
     - else
       = link_to "Unpublish", unpublish_post_path(@post), class: "pure-button button-warning"
+    = link_to "Delete", post_path(@post), method: "delete", class: "pure-button button-error"
 
   #post{:contenteditable => "true"}
     = @post.post
 
+  #hidden_submit{:style => "display:none"}
+    = form_for(@post) do |f|
+      = f.text_field :post
+      = f.text_field :title
+
   = render 'layouts/disqus'
+
+#save
+  Saved

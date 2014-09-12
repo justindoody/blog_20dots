@@ -60,15 +60,6 @@ body.all_posts {
     opacity: .5;
   }
 
-  /* I can probably refactor these into one css command... */
-  .post_edit {
-    outline: 0;
-  }
-
-  #content:focus {
-    outline: 0;
-  }
-
   .draft {
     font-family: "Avenir Next", Helvetica, sans-serif;
     font-size: 22px;
@@ -126,7 +117,16 @@ body.all_posts {
 
 body.post {
 
-  #post_title:focus {
+  /* I can probably refactor these into one css command... */
+  .post_edit {
+    outline: 0;
+  }
+
+  #post:focus {
+    outline: 0;
+  }
+
+  #post_title_t:focus {
     outline: 0;
   }
 
@@ -162,7 +162,28 @@ body.post {
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   }
 
+  .button-error {
+    color: white;
+    background: rgb(202, 60, 60); /* this is a maroon */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  }
+
   [contentEditable=true]:empty:not(:focus):before {
     content: attr(data-ph)
   }
+
+  #save {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 15px;
+  background-color: #000000;
+  opacity: .33;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 }

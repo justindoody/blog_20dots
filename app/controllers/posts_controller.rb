@@ -16,15 +16,16 @@ class PostsController < ApplicationController
   def new
     @post = Post.create(title: "A New Post", post: "Start typing...")
     if @post.save
-      redirect_to @post
+      redirect_to edit_post_path(@post)
     else
-      redirect_url root_url
+      redirect_to root_url
     end
   end
 
   def destroy
+    @post = Post.friendly.find(params[:id])
     @post.destroy
-    redirect_url root_url
+    redirect_to root_url
   end
 
   def edit
@@ -33,6 +34,10 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post = Post.friendly.find(params[:id])
+    if @post.update_attributes(post_params)
+      redirect_to edit_post_path(@post)
+    end
   end
 
   def admin
@@ -54,6 +59,6 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.permit(:title, :post)
+      params.fetch(:post, {}).permit(:post, :title)
     end
 end
