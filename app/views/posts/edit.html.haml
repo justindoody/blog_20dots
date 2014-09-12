@@ -14,12 +14,19 @@
       #post_height
         .date
           = @post.created_at.strftime("%B %d, %Y")
-        #post_title
+        #post_title{:contenteditable => "true"}
           = @post.title
 
 = render 'layouts/sidebar'
 
 #content
-  = @post.post
+  #post_actions
+    - if @post.draft
+      = link_to "Publish", publish_post_path(@post), class: "pure-button button-success"
+    - else
+      = link_to "Unpublish", unpublish_post_path(@post), class: "pure-button button-warning"
+
+  #post{:contenteditable => "true"}
+    = @post.post
 
   = render 'layouts/disqus'

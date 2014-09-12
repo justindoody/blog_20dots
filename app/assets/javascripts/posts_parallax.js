@@ -22,7 +22,7 @@ function parallax() {
 
 		
 		function parallaxScroll(scrolledY) {		
-			$('#header_container, #header_container_blurred').css('top', '-' + ((scrolledY * 0.1)) + 'px');
+			$('#header_container, #header_container_blurred, #header_container_text').css('top', '-' + ((scrolledY * 0.1)) + 'px');
 			var visible_container_height = ($('#header_wrapper').height() + $('#header_container').position().top) - scrolledY;
 			console.log(visible_container_height);
 			// Prevents post title paralax effect from going outside of the parent div

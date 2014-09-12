@@ -7,8 +7,15 @@
           ="#" << post.cover_photo << "\{background-image: url('assets/post_covers/" << post.cover_photo << ".jpg');}"
           ="#" << post.cover_photo << ":hover\{background-image: url('assets/post_covers/" << post.cover_photo << "_blur.jpg');}"
       %li
-        = link_to post, class: "post_container cover_photo", id: post.cover_photo do
+        = link_to edit_post_path(post), class: "post_container cover_photo", id: post.cover_photo do
+          - if post.draft
+            .draft
+              Draft
           .post_title
             .date
               = post.created_at.strftime("%B %d, %Y")
             = post.title
+
+#admin_fixed
+= link_to "new post", new_post_path, id: "new_post_button"
+= link_to "logout", logout_path, method: "delete", id: "logout_button"
