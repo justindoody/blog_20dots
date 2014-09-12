@@ -1,0 +1,233 @@
+body.all_posts {
+@media only screen and (max-width: 900px) {
+    body {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    #sidebar {
+      width: 100%;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+    #face_circle {
+      width: 30%;
+      float: left;
+    }
+    #about {
+      margin-top: 0px;
+      width: 50%;
+      margin-left: 5%;
+      font-size: 1.8em;
+    }
+
+    #about_para {
+      width: 50%;
+      margin-top: 20px;
+      margin-left: 5%;
+      margin-bottom: 40px;
+    }
+    .button_container {
+      float: left;
+      width: auto;
+      margin-left: 5%;
+    }
+    #all_posts {
+      margin-left: 0px;
+    }
+    .post_container {
+      margin-left: 0px;
+    }
+    .post_title {
+      font-size: 2.6em;
+    }
+
+  }
+
+  @media only screen and (max-width: 320px) {
+    #sidebar {
+      width: 94%;
+      margin-left: 3%;
+      margin-right: 3%;
+      padding-top: 5%;
+    }
+    #face_circle {
+      width: 25%;
+      float: left;
+      margin-top: 5%;
+    }
+    #about {
+      margin-top: 0px;
+      width: 66%;
+      margin-left: 5%;
+      font-size: 1.8em;
+      margin-top: 35px;
+      margin-bottom: 20px;
+    }
+
+    #about_para {
+      width: 94%;
+      margin-top: 20px;
+      margin-left: 3%;
+      margin-right: 3%;
+      margin-bottom: 20px;
+      font-size: 1em;
+    }
+    .button_container {
+      float: left;
+      width: auto;
+      margin-right: 5%;
+    }
+    #all_posts {
+      margin-left: 0px;
+    }
+    .post_container {
+      margin-left: 0px;
+    }
+    .post_title {
+      font-size: 2.2em;
+    }
+
+  }
+
+  @media (max-height: 800px) and (min-width: 900px) {
+    #face_circle {
+      width: 60%;
+      margin-left: 14%
+    }
+    #sidebar {
+      padding-top: 20px;
+    }
+    #about {
+      margin-top: 20px;
+    }
+    #about_para {
+      margin-bottom: 20px;
+    }
+
+  }
+  @media (max-height: 650px) and (min-width: 900px) {
+    #face_circle {
+      width: 0%;
+      margin-left: 14%
+    }
+    #sidebar {
+      padding-top: 20px;
+    }
+    #about {
+      margin-top: 20px;
+    }
+    #about_para {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+body.post {
+  @media only screen and (max-width: 970px) {
+    #sidebar {
+      float: left;
+      width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+      padding-top: 0px;
+      top: auto;
+      position: static;
+    }
+    #face_circle {
+      display: none;
+    }
+    #about {
+      display: none;
+    }
+    #about_para {
+      display: none;
+    }
+    #content {
+      position: relative;
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-bottom: 150px;
+      width: 90%;
+      max-width: inherit;
+      margin-top: 60px;
+      font-size: 23px;
+      line-height: 43px;
+    }
+    .post_title {
+      width: 100%;
+      margin-left: auto;
+      text-align: center;
+      margin-right: auto;
+      left: auto;
+    }
+    .button_container {
+      float: left;
+      width: 33%;   
+      margin-top: 35px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .sidebar_button {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  }
+  @media only screen and (min-width: 970px) {
+    #sidebar {
+      width: 325px;
+    }
+
+  }
+  @media only screen and (max-width: 320px) {
+    #content {
+      font-size: 18px;
+      line-height: 30px;
+    }
+    .button_container {
+      float: left;
+      width: auto;
+      margin-right: 2%;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+    .sidebar_button {
+      font-size: 12px;
+    }
+
+  }
+  /* Media queries for resizing the sidebar as the screen height changes */
+  @media (max-height: 800px) and (min-width: 970px) {
+    #face_circle {
+      width: 60%;
+      margin-left: 14%
+    }
+    #sidebar {
+      padding-top: 20px;
+    }
+    #about {
+      margin-top: 20px;
+    }
+    #about_para {
+      margin-bottom: 20px;
+    }
+
+  }
+  @media (max-height: 650px) and (min-width: 970px) {
+    #face_circle {
+      width: 0%;
+      margin-left: 14%
+    }
+    #sidebar {
+      padding-top: 20px;
+    }
+    #about {
+      margin-top: 20px;
+    }
+    #about_para {
+      margin-bottom: 20px;
+    }
+
+  }
+}

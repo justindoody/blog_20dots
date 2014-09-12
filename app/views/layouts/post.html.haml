@@ -7,9 +7,5 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
-  %body.all_posts
-    = render 'layouts/sidebar'
-    - flash.each do |message_type, message|
-      %div{:class => "alert alert-#{message_type}"}
-        = message
+  %body.post{:data => {:controller => "parallax"}}
     = yield

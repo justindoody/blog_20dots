@@ -4,13 +4,13 @@
   #about Hi, I'm Justin.
 
   #about_para
-    I occasionally publish my thoughts here. Sometimes I <a href="https://soundcloud.com/arsvita" class="link">make music</a>. I'm a full stack web developer. Check out my <a href="https://fbmusicgate.com/lp/?r=20dots" class="link">latest project</a>.
+    I occasionally post my thoughts here. Sometimes I <a href="https://soundcloud.com/arsvita" class="link">make music</a>. I'm a full stack RoR web developer. Check out my <a href="https://fbmusicgate.com/lp/?r=20dots" class="link">latest project</a>.
 
   .button_container
-    %a.sidebar_button{:href => "/about"} about me
+    = link_to "about", about_path, class: "sidebar_button"
 
   .button_container
     %a.sidebar_button{:id => "contact_button", :href => "/"} contact
 
   .button_container
-    %a.sidebar_button{:href => "/"} all posts
+    = link_to "all posts", posts_path, class: "sidebar_button"

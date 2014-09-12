@@ -1,0 +1,29 @@
+- provide(:title, "| #{@post.title}")
+
+%style 
+  -# Dynamically generating the css for the hover effect
+  - if !@post.cover_photo.nil?
+    ="#header_container\{background-image: url('/assets/post_covers/" << @post.cover_photo << ".jpg');}"
+    ="#header_container_blurred\{background-image: url('/assets/post_covers/" << @post.cover_photo << "_blur.jpg');}"
+
+#header_wrapper
+  #header_container
+    .post_title
+      #post_height
+        .date
+          = @post.created_at.strftime("%B %d, %Y")
+        #post_title
+          = @post.title
+
+  #header_container_blurred
+    .post_title
+      .date
+        = @post.created_at.strftime("%B %d, %Y")
+      = @post.title
+
+= render 'layouts/sidebar'
+
+#content
+  = @post.post
+
+  = render 'layouts/disqus'

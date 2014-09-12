@@ -1,0 +1,128 @@
+body.all_posts {
+  #admin_fixed {
+    position: fixed;
+    top: 0px;
+    left: 360px;
+    right: 0px;
+    height: 40px;
+    background-color: #000;
+    opacity: .20;
+    z-index: 9000;
+  }
+
+  #new_post_button {
+    position: fixed;
+    top: 0px;
+    left: 360px;
+    height: 40px;
+    width: 10%;
+    min-width: 120px;
+    line-height: 40px;
+    text-align: center;
+    font-family: "Avenir Next";
+    font-weight: lighter;
+    font-size: 20px;
+    color: #efefef;
+    background-color: #000;
+    opacity: .5;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    z-index: 9001;
+    text-decoration: none;
+  }
+  #new_post_button:hover {
+    opacity: .85;
+  }
+
+  #logout_button {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    height: 40px;
+    width: 10%;
+    min-width: 120px;
+    line-height: 40px;
+    text-align: center;
+    font-family: "Avenir Next";
+    font-weight: lighter;
+    font-size: 20px;
+    color: #070707;
+    background-color: #fff;
+    opacity: .2;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    text-decoration: none;
+    z-index: 9001;
+  }
+  #logout_button:hover {
+    opacity: .5;
+  }
+
+  /* I can probably refactor these into one css command... */
+  .post_edit {
+    outline: 0;
+  }
+
+  .post_title:focus {
+    outline: 0;
+  }
+
+  #content:focus {
+    outline: 0;
+  }
+
+  .draft {
+    font-family: "Avenir Next", Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: 100;
+    font-style: italic;
+    position: absolute;
+    left: 30px;
+    top: 240px;
+    text-decoration: none;
+    color: #fff;
+    opacity: .6;
+    z-index: 9999;
+    width: 120px;
+  }
+
+  .delete_post {
+    font-family: "Avenir Next", Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: 100;
+    font-style: italic;
+    float: right;
+    text-decoration: none;
+    color: #000;
+    opacity: .6;
+    position: relative;
+    z-index: 1;
+    width: 120px;
+    margin-top: -50px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #f7a3a3;
+  }
+}
+
+body.post {
+  #back_to_admin {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 15px;
+    background-color: #000000;
+    opacity: .33;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  [contentEditable=true]:empty:not(:focus):before {
+    content: attr(data-ph)
+  }
+}
