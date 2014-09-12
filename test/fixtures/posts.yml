@@ -3,9 +3,9 @@
 one:
   title: "Test Post One"
   post: "Sentence for post number one..."
-  cover_photo: 
+  cover_photo: nil
 
 two:
   title: "Test Post Two"
   post: "A second post about nothing..."
-  cover_photo: 
+  cover_photo: nil

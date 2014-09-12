@@ -9,7 +9,13 @@ class PostsController < ApplicationController
     render :layout =>  'post'
   end
 
-  def create
+  def new
+    @post = Post.create(title: "A New Post", post: "Start typing...")
+    if @post.save
+      redirect_to @post
+    else
+      redirect_url root_url
+    end
   end
 
   def destroy
@@ -19,4 +25,10 @@ class PostsController < ApplicationController
 
   def update
   end
+
+  private
+
+    def post_params
+      params.permit(:title, :post)
+    end
 end
