@@ -21,6 +21,7 @@
 = render 'layouts/sidebar'
 
 #content{:data => {:controller => "edit"}}
+
   #post_actions
     - if @post.draft
       = link_to "Publish", publish_post_path(@post), class: "pure-button button-success"
