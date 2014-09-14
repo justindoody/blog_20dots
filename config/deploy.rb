@@ -17,6 +17,8 @@ set :deploy_to, '/home/justin/rails_apps/20dots.com/'
 set :repository, 'https://github.com/jdprgm/blog_20dots.git'
 set :branch, 'master'
 
+set_default :rails_env, 'production'
+
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
 set :shared_paths, ['config/database.yml', 'log']

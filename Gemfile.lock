@@ -91,6 +91,7 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     multi_json (1.10.1)
+    mysql2 (0.3.16)
     polyglot (0.3.5)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -172,6 +173,7 @@ DEPENDENCIES
   jquery-turbolinks
   mini_backtrace
   minitest-reporters
+  mysql2
   rails (= 4.1.5)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
