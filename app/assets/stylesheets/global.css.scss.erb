@@ -9,7 +9,7 @@ body {
 #sidebar {
   width: 325px;
   margin-left: 35px;
-  padding-top: 50px;
+  padding-top: 20px;
   margin-bottom: 30px;
 }
 
@@ -98,4 +98,20 @@ textarea:focus, input:focus {
 .alert {
   padding-bottom: 6px;
   font-size: 14px;
+}
+
+#rss_icon {
+  float: left;
+  width: 38px;
+  height: 38px;
+  background-image: url('<%= image_path('rss.png') %>');
+  margin-right: 120px;
+}
+
+#rss_icon:hover{
+  background-position: -38px 0;
+}
+
+#face_circle {
+  float: left;
 }
