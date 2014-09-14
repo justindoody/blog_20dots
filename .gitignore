@@ -17,3 +17,6 @@
 
 # Ignore Spring files.
 /spring/*.pid
+
+# Hide the production database details
+/config/database.yml

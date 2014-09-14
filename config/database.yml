@@ -21,5 +21,8 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  database: 20dots
+  username: 20dots_admin
+  password: d8$jdlq2
+  host: localhost

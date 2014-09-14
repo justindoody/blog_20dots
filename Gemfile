@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -36,9 +35,18 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem 'friendly_id'
 
+group :development, :test do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+end
+
 group :test do
   gem 'minitest-reporters' # Create customizable Minitest output formats.
   gem 'mini_backtrace' # Removes RVM warnings in test reports, edited config/initializers/backgtrace
   gem 'guard-minitest' # Automatically runs tests
+end
+
+group :production do
+  gem 'mysql2'
 end
 
