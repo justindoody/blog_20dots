@@ -3,3 +3,4 @@
   - if !post.cover_photo.nil?
     = "#" << post.cover_photo << "\{background-image: url(' #{image_path("post_covers/" << post.cover_photo << ".jpg")} ');}"
     = "#" << post.cover_photo << ":hover\{background-image: url(' #{image_path("post_covers/" << post.cover_photo << "_blur.jpg")} ');}"
+    = "#" << post.cover_photo << ":after\{content: url(' #{image_path("post_covers/" << post.cover_photo << "_blur.jpg")} '); display: none; }"
