@@ -164,6 +164,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  builder
   coffee-rails (~> 4.0.0)
   friendly_id
   guard-minitest

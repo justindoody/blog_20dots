@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   delete 'logout'   => 'sessions#destroy'
   resources :sessions, only: [:new, :create, :destroy]
 
+  get "/feed" => "static_pages#feed", :as => "feed", :defaults => { :format => 'atom' }
 end

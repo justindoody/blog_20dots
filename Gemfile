@@ -35,6 +35,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem 'friendly_id'
 
+# Used for creating the RSS Feed
+gem 'builder'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

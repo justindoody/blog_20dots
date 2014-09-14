@@ -1,11 +1,7 @@
 #all_posts
   %ul.flip
     - @posts.each do |post|
-      %style
-        -# Dynamically generating the css for the hover effect
-        - if !post.cover_photo.nil?
-          = "#" << post.cover_photo << "\{background-image: url(' #{image_path("post_covers/" << post.cover_photo << ".jpg")} ');}"
-          = "#" << post.cover_photo << ":hover\{background-image: url(' #{image_path("post_covers/" << post.cover_photo << "_blur.jpg")} ');}"
+      = render "dynamic_css", :post => post
       %li
         = link_to edit_post_path(post), class: "post_container cover_photo", id: post.cover_photo do
           - if post.draft
