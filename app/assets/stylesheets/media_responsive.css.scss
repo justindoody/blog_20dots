@@ -5,9 +5,13 @@ body.all_posts {
       text-size-adjust: 100%;
     }
     #sidebar {
-      width: 100%;
+      width: 90%;
       margin-left: 5%;
       margin-right: 5%;
+      float: left;
+      position: static;
+      display: block;
+      top: auto;
     }
     #face_circle {
       width: 30%;
@@ -33,12 +37,39 @@ body.all_posts {
     }
     #all_posts {
       margin-left: 0px;
+      float: left;
+      width: 100%;
+      position: static;
     }
     .post_container {
       margin-left: 0px;
+
     }
     .post_title {
-      font-size: 2.6em;
+      font-size: 1.75em;
+      top: 70px;
+      line-height: 80px;
+      width: 80%;
+    }
+
+    .date {
+      line-height: 30px;
+    }
+
+    #rss_icon {
+      display: none;
+    }
+
+    ul {
+      overflow-y: visible;
+    }
+
+    #admin_fixed {
+      left: 0px;
+    }
+
+    #new_post_button {
+      left: 0px;
     }
 
   }
@@ -46,8 +77,8 @@ body.all_posts {
   @media only screen and (max-width: 320px) {
     #sidebar {
       width: 94%;
-      margin-left: 3%;
-      margin-right: 3%;
+      margin-left: 2%;
+      margin-right: 2%;
       padding-top: 5%;
     }
     #face_circle {
@@ -172,6 +203,11 @@ body.post {
       margin-left: auto;
       margin-right: auto;
     }
+
+    #rss_icon {
+      display: none;
+    }
+
 
   }
   @media only screen and (min-width: 970px) {

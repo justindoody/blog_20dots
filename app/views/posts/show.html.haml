@@ -3,8 +3,8 @@
 %style 
   -# Dynamically generating the css for the hover effect
   - if !@post.cover_photo.nil?
-    = "#header_container\{background-image: url(' #{image_path("post_covers/" << @post.cover_photo << ".jpg")} ');}"
-    = "#header_container_blurred\{background-image: url(' #{image_path("post_covers/" << @post.cover_photo << "_blur.jpg")} ');}"
+    = "#header_container\{background-image: url(' #{@post.cover_photo.url} ');}"
+    = "#header_container_blurred\{background-image: url(' #{@post.cover_photo.blur.url} ');}"
 
 #header_wrapper
   #header_container

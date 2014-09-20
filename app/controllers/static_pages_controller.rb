@@ -1,7 +1,8 @@
 class StaticPagesController < ApplicationController
 
   def about
-    
+    @post = Post.where({title: "about"}).first
+    render :layout =>  'post'
   end
 
   def feed

@@ -35,6 +35,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.friendly.find(params[:id])
+    @post.slug = nil
     if @post.update_attributes(post_params)
       redirect_to edit_post_path(@post)
     end
@@ -59,6 +60,6 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.fetch(:post, {}).permit(:post, :title)
+      params.fetch(:post, {}).permit(:post, :title, :cover_photo)
     end
 end

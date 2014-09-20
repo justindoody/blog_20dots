@@ -38,6 +38,12 @@ gem 'friendly_id'
 # Used for creating the RSS Feed
 gem 'builder'
 
+# Image upload
+gem 'carrierwave'
+
+# Image manipulation gem to interface with ImageMagick
+gem 'mini_magick'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

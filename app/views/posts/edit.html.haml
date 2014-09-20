@@ -3,8 +3,9 @@
 %style 
   -# Dynamically generating the css for the hover effect
   - if !@post.cover_photo.nil?
-    = "#header_container\{background-image: url(' #{image_path("post_covers/" << @post.cover_photo << ".jpg")} ');}"
-    = "#header_container_blurred\{background-image: url(' #{image_path("post_covers/" << @post.cover_photo << "_blur.jpg")} ');}"
+    = "#header_container\{background-image: url(' #{@post.cover_photo.url} ');}"
+    = "#header_container_blurred\{background-image: url(' #{@post.cover_photo.blur.url} ');}"
+
 
 #header_wrapper
   #header_container
@@ -28,6 +29,10 @@
     - else
       = link_to "Unpublish", unpublish_post_path(@post), class: "pure-button button-warning"
     = link_to "Delete", post_path(@post), method: "delete", class: "pure-button button-error"
+
+    = form_for(@post, html: { multipart: true }) do |f|
+      = f.file_field :cover_photo, accept: 'image/jpeg,image/gif,image/png'
+      = f.submit "Upload Image", class: "pure-button"
 
   #post{:contenteditable => "true"}
     = @post.post

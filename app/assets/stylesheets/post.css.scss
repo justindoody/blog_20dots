@@ -33,10 +33,6 @@ body.post {
     -webkit-transform: translate3d(0,0,0);
   }
 
-  #disqus_spacer {
-    height: 100px;
-  }
-
   #content {
     position: relative;
     margin-left: 385px;
@@ -85,15 +81,15 @@ body.post {
   }
 }
 
-#disqus_thread{
-     position: relative;
+#disqus_thread {
+  margin-top: 100px;
 }
 #disqus_thread:after{
-     content: "";
-     display: block;
-     height: 55px;
-     width: 100%;
-     position: absolute;
-     bottom: 0px;
-     background:white;
+  content: "";
+  display: block;
+  height: 55px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  background:white;
 }
