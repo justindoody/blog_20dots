@@ -27,16 +27,9 @@ function edit() {
       
     $("#post").keyup(function() {
       delay(function() {
-        $('#save').slideDown().delay(500).fadeOut();
         getContent();
-        $.ajax({
-          type  : "PUT",
-          url   : $('.edit_post').attr('action'),
-          data  : $('.edit_post').serialize(),
-          success : function() {
-            $('#save').slideDown().delay(500).fadeOut();
-          }
-        });
+        $('#hidden_button').click();
+        $('#save').slideDown().delay(500).fadeOut();
       }, 750);
     });
 
@@ -44,14 +37,7 @@ function edit() {
       delay(function() {
         $('#save').slideDown().delay(500).fadeOut();
         getTitle();
-        $.ajax({
-          type  : "PUT",
-          url   : $('.edit_post').attr('action'),
-          data  : $('.edit_post').serialize(),
-          success : function() {
-            $('#save').slideDown().delay(500).fadeOut();
-          }
-        });
+        $('#hidden_button').click();
       }, 750);
     });
 

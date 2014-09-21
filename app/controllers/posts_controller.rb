@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     if logged_in?
       redirect_to admin_path
     end
-    @posts = Post.where(draft: false)
+    @posts = Post.where(draft: false).order(created_at: :desc)
   end
 
   def show
@@ -15,11 +15,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.create(title: "A New Post", post: "Start typing...")
-    if @post.save
-      redirect_to edit_post_path(@post)
-    else
-      redirect_to root_url
-    end
+    redirect_to root_url
   end
 
   def destroy
@@ -29,32 +25,32 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.friendly.find(params[:id])
+    @post = Post.find(params[:id])
     render :layout =>  'post'
   end
 
   def update
-    @post = Post.friendly.find(params[:id])
+    @post = Post.find(params[:id])
     @post.slug = nil
     if @post.update_attributes(post_params)
-      redirect_to edit_post_path(@post)
+      redirect_to edit_post_path(@post.id)
     end
   end
 
   def admin
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def publish
-    @post = Post.friendly.find(params[:id])
+    @post = Post.find(params[:id])
     @post.update_attributes(draft: false)
-    redirect_to edit_post_path(@post)
+    redirect_to edit_post_path(@post.id)
   end
 
   def unpublish
-    @post = Post.friendly.find(params[:id])
+    @post = Post.find(params[:id])
     @post.update_attributes(draft: true)
-    redirect_to edit_post_path(@post)
+    redirect_to edit_post_path(@post.id)
   end
 
   private

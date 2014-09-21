@@ -17,7 +17,10 @@
           = @post.created_at.strftime("%B %d, %Y")
         #post_title_t{:contenteditable => "true"}
           = @post.title
-            
+    #cover_edit
+      = form_for(@post, url: post_path(@post.id), html: { multipart: true }) do |f|
+        = f.file_field :cover_photo, accept: 'image/jpeg,image/gif,image/png'
+        = f.submit "Upload Image", class: "pure-button"
 
 = render 'layouts/sidebar'
 
@@ -25,24 +28,24 @@
 
   #post_actions
     - if @post.draft
-      = link_to "Publish", publish_post_path(@post), class: "pure-button button-success"
+      = link_to "Publish", publish_post_path(@post.id), class: "pure-button button-success"
     - else
-      = link_to "Unpublish", unpublish_post_path(@post), class: "pure-button button-warning"
-    = link_to "Delete", post_path(@post), method: "delete", class: "pure-button button-error"
-
-    = form_for(@post, html: { multipart: true }) do |f|
-      = f.file_field :cover_photo, accept: 'image/jpeg,image/gif,image/png'
-      = f.submit "Upload Image", class: "pure-button"
+      = link_to "Unpublish", unpublish_post_path(@post.id), class: "pure-button button-warning"
+    = link_to "Delete", post_path(@post.id), method: "delete", class: "pure-button button-error"
 
   #post{:contenteditable => "true"}
-    = @post.post
+    = @post.post.html_safe
 
   #hidden_submit{:style => "display:none"}
-    = form_for(@post) do |f|
+    = form_for(@post, url: post_path(@post.id), remote: true) do |f|
       = f.text_field :post
       = f.text_field :title
+      = f.submit "submit", id: "hidden_button"
 
   = render 'layouts/disqus'
 
 #save
   Saved
+
+#admin_fixed
+  = link_to "logout", logout_path, method: "delete", id: "logout_button"

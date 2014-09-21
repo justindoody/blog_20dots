@@ -1,3 +1,28 @@
+#logout_button {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    height: 40px;
+    width: 10%;
+    min-width: 120px;
+    line-height: 40px;
+    text-align: center;
+    font-family: "Avenir Next";
+    font-weight: lighter;
+    font-size: 20px;
+    color: #070707;
+    background-color: #fff;
+    opacity: .2;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    text-decoration: none;
+    z-index: 9001;
+  }
+  #logout_button:hover {
+    opacity: .5;
+  }
+  
 body.all_posts {
   #admin_fixed {
     position: fixed;
@@ -35,30 +60,7 @@ body.all_posts {
     opacity: .85;
   }
 
-  #logout_button {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    height: 40px;
-    width: 10%;
-    min-width: 120px;
-    line-height: 40px;
-    text-align: center;
-    font-family: "Avenir Next";
-    font-weight: lighter;
-    font-size: 20px;
-    color: #070707;
-    background-color: #fff;
-    opacity: .2;
-    transition: opacity .25s ease-in-out;
-    -moz-transition: opacity .25s ease-in-out;
-    -webkit-transition: opacity .25s ease-in-out;
-    text-decoration: none;
-    z-index: 9001;
-  }
-  #logout_button:hover {
-    opacity: .5;
-  }
+  
 
   .draft {
     font-family: "Avenir Next", Helvetica, sans-serif;
@@ -173,17 +175,31 @@ body.post {
   }
 
   #save {
-  position: fixed;
-  top: 10px;
-  left: 20px;
-  color: #ffffff;
-  font-size: 13px;
-  line-height: 15px;
-  background-color: #000000;
-  opacity: .33;
-  padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 15px;
+    background-color: #000000;
+    opacity: .33;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  #cover_edit {
+    line-height: 15px;
+    font-size: 15px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 100px;
+    color: #fff;
+  }
+
+  #post_cover_photo {
+    margin-bottom: 10px;
+  }
 
 }

@@ -20,7 +20,7 @@
 = render 'layouts/sidebar'
 
 #content
-  = @post.post
+  = @post.post.html_safe
 
   = render 'subscribe'
   = render 'layouts/disqus'

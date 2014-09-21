@@ -4,7 +4,7 @@
       = render "dynamic_css", :post => post
       %li
         - p = "p" + post.id.to_s
-        = link_to edit_post_path(post), class: "post_container cover_photo", id: p do
+        = link_to edit_post_path(post.id), class: "post_container cover_photo", id: p do
           - if post.draft
             .draft
               Draft
