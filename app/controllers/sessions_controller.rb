@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    @posts = Post.all
+    @posts = Post.where(draft: false).order(created_at: :desc)
   end
 
   def create

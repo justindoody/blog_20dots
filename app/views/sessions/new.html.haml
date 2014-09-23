@@ -16,7 +16,8 @@
     - @posts.each do |post|
       = render "posts/dynamic_css", :post => post
       %li
-        = link_to post, class: "post_container cover_photo", id: post.cover_photo do
+        - p = "p" + post.id.to_s
+        = link_to post, class: "post_container cover_photo", id: p do
           .post_title
             .date
               = post.created_at.strftime("%B %d, %Y")
