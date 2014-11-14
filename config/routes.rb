@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'admin' => 'posts#admin'
 
   root 'posts#index'
-  get 'about' => 'static_pages#about'
+   
 
   get    'login'    => 'sessions#new'
   delete 'logout'   => 'sessions#destroy'
