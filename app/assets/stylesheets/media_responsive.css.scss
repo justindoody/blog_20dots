@@ -1,4 +1,11 @@
 body.all_posts {
+  
+@media only screen and (min-width: 1625px) {
+  .bg {
+    width: 108%;
+    height: auto;
+  }  
+}
 @media only screen and (max-width: 900px) {
     body {
       -webkit-text-size-adjust: 100%;

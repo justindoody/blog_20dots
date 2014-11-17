@@ -1,10 +1,12 @@
 #all_posts
   %ul.flip
     - @posts.each do |post|
-      = render "dynamic_css", :post => post
       %li
         - p = "p" + post.id.to_s
-        = link_to edit_post_path(post.id), class: "post_container cover_photo", id: p do
+        = link_to edit_post_path(post.id), class: "post_container cover_photo" do
+          %img.bg.blurry{:src => "#{post.cover_photo.url}", :style => "filter: url('#blur_svg')" }
+          %img.bg.crisp{:src => "#{post.cover_photo.url}"}
+          
           - if post.draft
             .draft
               Draft

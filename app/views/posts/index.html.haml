@@ -1,11 +1,18 @@
 #all_posts
   %ul.flip
     - @posts.each do |post|
-      = render "dynamic_css", :post => post
       %li
-        - p = "p" + post.id.to_s
-        = link_to post, class: "post_container cover_photo", id: p do
+        = link_to post, class: "post_container cover_photo" do
+          %img.bg.blurry{:src => "#{post.cover_photo.url}", :style => "filter: url('#blur_svg')" }
+          %img.bg.crisp{:src => "#{post.cover_photo.url}"}
+
           .post_title
             .date
               = post.created_at.strftime("%B %d, %Y")
-            = post.title
+            = post.title.strip
+
+%svg
+  %filter#blur_svg{"color-interpolation-filters" => "sRGB"}
+    <feGaussianBlur stdDeviation="8"/>
+    %feComponentTransfer
+      <feFuncA type="discrete" tableValues="1 1"/>
