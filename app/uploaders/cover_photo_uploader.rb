@@ -5,16 +5,17 @@ class CoverPhotoUploader < CarrierWave::Uploader::Base
   process resize_to_fill: [2000, 500]
   process :convert => 'jpg'
 
-  version :blur do
-    process :blur
-    def blur
-      manipulate! do |img|
-        img.blur "0x8"
-        img = yield(img) if block_given?
-        img
-      end
-    end
-  end
+  
+  #version :blur do
+  #  process :blur
+  #  def blur
+  #    manipulate! do |img|
+  #      img.blur "0x8"
+  #      img = yield(img) if block_given?
+  #      img
+  #    end
+  #  end
+  #end
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
 

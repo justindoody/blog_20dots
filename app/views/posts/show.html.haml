@@ -1,14 +1,9 @@
 - provide(:title, "| #{@post.title}")
 
-%style 
-  -# Dynamically generating the css for the hover effect
-  - if !@post.cover_photo.nil?
-    = "#header_container\{background-image: url(' #{@post.cover_photo.url} ');}"
-    = "#header_container_blurred\{background-image: url(' #{@post.cover_photo.blur.url} ');}"
-
 #header_wrapper
-  %img.bg#crisp{:src => "#{@post.cover_photo.url}"}
-  %img.bg#blurry{:src => "#{@post.cover_photo.url}"}
+  - if !@post.cover_photo.url.nil?
+    %img.bg#crisp{:src => "#{@post.cover_photo.url}"}
+    %img.bg#blurry{:src => "#{@post.cover_photo.url}", :style => "filter: url('#blur_svg')"}
   #header_container_text
     #post_height.post_title
       .date
@@ -23,3 +18,9 @@
 
   = render 'subscribe'
   = render 'layouts/disqus'
+
+  %svg
+    %filter#blur_svg{"color-interpolation-filters" => "sRGB"}
+      <feGaussianBlur stdDeviation="8"/>
+      %feComponentTransfer
+        <feFuncA type="discrete" tableValues="1 1"/>

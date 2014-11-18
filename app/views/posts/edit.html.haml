@@ -1,15 +1,9 @@
 - provide(:title, "| #{@post.title}")
 
-%style 
-  -# Dynamically generating the css for the hover effect
-  - if !@post.cover_photo.nil?
-    = "#header_container\{background-image: url(' #{@post.cover_photo.url} ');}"
-    = "#header_container_blurred\{background-image: url(' #{@post.cover_photo.blur.url} ');}"
-
-
 #header_wrapper
-  %img.bg#crisp{:src => "#{@post.cover_photo.url}"}
-  %img.bg#blurry{:src => "#{@post.cover_photo.url}"}
+  - if !@post.cover_photo.url.nil?
+    %img.bg#crisp{:src => "#{@post.cover_photo.url}"}
+    %img.bg#blurry{:src => "#{@post.cover_photo.url}"}
   #header_container_text
     
     #post_height.post_title

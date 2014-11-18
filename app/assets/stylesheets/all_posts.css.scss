@@ -32,9 +32,6 @@ body.all_posts {
     z-index: -1;
   }
 
-  svg{
-    height: 0;
-  }
   .post_container:hover > .blurry {
     -webkit-filter: blur(7px);
   }
