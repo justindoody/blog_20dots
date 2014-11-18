@@ -8,15 +8,15 @@
 
 
 #header_wrapper
-  #header_container
-  #header_container_blurred
+  %img.bg#crisp{:src => "#{@post.cover_photo.url}"}
+  %img.bg#blurry{:src => "#{@post.cover_photo.url}"}
   #header_container_text
-    .post_title
-      #post_height
-        .date
-          = @post.created_at.strftime("%B %d, %Y")
-        #post_title_t{:contenteditable => "true"}
-          = @post.title
+    
+    #post_height.post_title
+      .date
+        = @post.created_at.strftime("%B %d, %Y")
+      #post_title_t{:contenteditable => "true"}
+        = @post.title
     #cover_edit
       = form_for(@post, url: post_path(@post.id), html: { multipart: true }) do |f|
         = f.file_field :cover_photo, accept: 'image/jpeg,image/gif,image/png'

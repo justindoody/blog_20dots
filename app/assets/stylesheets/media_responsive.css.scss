@@ -53,10 +53,11 @@ body.all_posts {
 
     }
     .post_title {
-      font-size: 1.75em;
-      top: 70px;
-      line-height: 80px;
+      font-size: 1.5em;
+      line-height: normal;
       width: 80%;
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
     }
 
     .date {
@@ -79,6 +80,16 @@ body.all_posts {
       left: 0px;
     }
 
+  }
+
+  @media only screen and (max-width: 550px) {
+    .post_title {
+      font-size: 1.2em;
+      line-height: normal;
+      width: 90%;
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+    }
   }
 
   @media only screen and (max-width: 320px) {
