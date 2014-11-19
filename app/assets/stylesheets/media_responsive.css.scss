@@ -1,12 +1,12 @@
 body.all_posts {
   
-@media only screen and (min-width: 1625px) {
-  .bg {
-    width: 108%;
-    height: auto;
-  }  
-}
-@media only screen and (max-width: 900px) {
+  @media only screen and (min-width: 1625px) {
+    .bg {
+      width: 108%;
+      height: auto;
+    }  
+  }
+  @media only screen and (max-width: 900px) {
     body {
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
@@ -21,26 +21,42 @@ body.all_posts {
       top: auto;
     }
     #face_circle {
-      width: 30%;
-      float: left;
+      width: 20%;
+      height: auto !important; 
+      margin-top: 0px !important;
+      display: flex;
+      display: -webkit-flex;
+      align-content:center;
+      -webkit-align-content:center;
+    }
+
+    #pic_hello {
+      display: flex;
+      display: -webkit-flex;
+      align-items: center;
+      -webkit-align-items: center;
     }
     #about {
-      margin-top: 0px;
-      width: 50%;
+      width: 75%;
       margin-left: 5%;
+      margin-top: 0px !important;
       font-size: 1.8em;
+      display: -webkit-flex;
+      display: flex;
     }
 
     #about_para {
-      width: 50%;
+      width: 100%;
       margin-top: 20px;
-      margin-left: 5%;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
     .button_container {
       float: left;
-      width: auto;
-      margin-left: 5%;
+      width: auto !important;  
+      margin-right: 20px;
+    }
+    .sidebar_button {
+      margin-top: 0px !important;
     }
     #all_posts {
       margin-left: 0px;
@@ -203,17 +219,19 @@ body.post {
       line-height: 43px;
     }
     .post_title {
-      width: 100% !important;
+      margin-left: 5% !important;
+      margin-right: 5% !important;
+      width: 90% !important;
       margin-left: auto;
-      text-align: center;
+      
       margin-right: auto;
       left: 0px !important;
     }
     .button_container {
       float: left;
-      width: 33%;   
+      width: auto !important;  
       margin-top: 35px;
-      margin-bottom: 30px;
+      margin-right: 20px;
       text-align: center;
     }
     .sidebar_button {
@@ -226,14 +244,21 @@ body.post {
       display: none;
     }
 
+    #post_height {
+      margin-left: 0px;
+    }
+
 
   }
   @media only screen and (min-width: 970px) {
     #sidebar {
       width: 325px;
     }
-
+    #post_height {
+      margin-left: 385px;
+    }
   }
+
   @media only screen and (max-width: 320px) {
     #content {
       font-size: 18px;

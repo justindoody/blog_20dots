@@ -66,8 +66,9 @@ body.post {
 
   #post_height {
     position: relative;
+    max-width: 800px;
     top: 50%;
-    width: 50%;
+    width: 60%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
   }
