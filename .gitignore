@@ -24,3 +24,6 @@
 # Hide the sublime project file
 20dots.sublime-project
 20dots.sublime-workspace
+
+# Remove the cover image upload directory
+/public/uploads/
