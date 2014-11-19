@@ -6,6 +6,10 @@ body.post {
     clip: rect(20px,100%,100%,20px);
   }
 
+  #post p {
+    text-indent: 50px;
+  }
+
   #blurry {
     -webkit-filter: blur(7px) brightness(.85);
     z-index: 0;
@@ -51,13 +55,34 @@ body.post {
     width: 60%;
     max-width: 800px;
     font-family: "FreightText Pro";
-    font-size: 22px;
-    line-height: 40px;
+    font-size: 21px;
+    line-height: 36px;
     margin-top: 60px;
     font-weight: 100;
     outline: 0;
-    padding-bottom: 400px;
     letter-spacing: .02rem;
+    color: #333333;
+  }
+
+  blockquote {
+    border-left: 5px solid #4197e2;
+    font-style: italic;
+    padding-left: 25px;
+    margin: 0px;
+  }
+
+  h3 {
+    font-family: "Helvetica Neue","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-size: 35px;
+    color: #333333;
+  }
+
+  h4 {
+    font-family: "Helvetica Neue","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-weight: lighter;
+    font-size: 35px;
+    color: #777777;
+
   }
 
   #sidebar {
