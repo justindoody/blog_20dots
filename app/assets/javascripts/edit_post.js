@@ -2,6 +2,22 @@
 
 $(document).on("page:change", edit);
 
+function fx()
+{
+
+  var target=null;
+  if(window.getSelection)
+  {
+    target=window.getSelection().getRangeAt(0).commonAncestorContainer;
+    return((target.nodeType===1)?target:target.parentNode);
+  }
+  else if(document.selection)
+  {
+    var target=document.selection.createRange().parentElement();
+  }
+  return target;
+}
+
 function edit() {
   if ($('#content').data("controller") == "edit") // Checks if we are on the right page
   {
@@ -26,6 +42,14 @@ function edit() {
     $('#save').hide();
       
     $("#post").keyup(function() {
+      
+      var h = $(fx()).offset().top;
+      if (fx().innerHTML == "<br>"){
+        $("#insert-plugin").css('top', (h - 17) + 'px').css('display', "block");
+      } else {
+        $("#insert-plugin").css('display', "none");
+      }
+      
       delay(function() {
         getContent();
         $('#hidden_button').click();
@@ -39,6 +63,19 @@ function edit() {
         getTitle();
         $('#hidden_button').click();
       }, 750);
+    });
+
+    $(".insert-click").click(function() {
+      $('.insert-click').toggleClass("turn");
+      $('.insert-option').toggleClass("hide");
+    });
+
+    $("#insert-image").click(function() {
+
+    });
+
+    $("#cover-icon-container > input").change(function(){
+        $(".cover_form").submit();
     });
 
   }

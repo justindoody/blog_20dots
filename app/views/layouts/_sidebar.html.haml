@@ -5,15 +5,18 @@
   
     #about Hi, I'm Justin.
 
+
   #about_para
     I occasionally type here. Sometimes I <a href="https://soundcloud.com/arsvita" class="link">make music</a>. I'm a full stack <a href="http://rubyonrails.org/" class="link">RoR</a> web developer and a <a href="https://www.apple.com/swift/" class="link">Swift</a> dabbler. Check out my <a href="https://fbmusicgate.com/lp/?r=20dots" class="link">latest project</a>.
+
 
   -#.button_container
     -# = link_to "about", about_path, class: "sidebar_button"
   .button_container
-    = link_to "all posts", posts_path, class: "sidebar_button"
+    
+    = link_to ("<i class='fa fa-book'></i> all posts").html_safe, posts_path, class: "sidebar_button"
 
   .button_container
-    %a.sidebar_button{:id => "contact_button", :href => ""} contact
+    %a.sidebar_button{:id => "contact_button", :href => ""} <i class='fa fa-envelope'></i> contact
 
   

@@ -16,5 +16,5 @@
             = post.title
 
 #admin_fixed
-= link_to "new post", new_post_path, id: "new_post_button"
-= link_to "logout", logout_path, method: "delete", id: "logout_button"
+= link_to ("<i class='fa fa-pencil fa-fw'></i> new post").html_safe, new_post_path, id: "new_post_button"
+= link_to ("<i class='fa fa-sign-out fa-fw'></i> logout").html_safe, logout_path, method: "delete", id: "logout_button"

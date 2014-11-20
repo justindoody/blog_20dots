@@ -12,9 +12,12 @@
       #post_title_t{:contenteditable => "true"}
         = @post.title
     #cover_edit
-      = form_for(@post, url: post_path(@post.id), html: { multipart: true }) do |f|
-        = f.file_field :cover_photo, accept: 'image/jpeg,image/gif,image/png'
-        = f.submit "Upload Image", class: "pure-button"
+      = form_for(@post, url: post_path(@post.id), html: { multipart: true, class: "edit_post cover_form" }) do |f|
+        #cover-icon-container
+          = f.file_field :cover_photo, accept: 'image/jpeg,image/gif,image/png'
+          %i.fa.fa-camera.cover-icon
+        = f.submit  "Upload Cover", class: "cover-form-button"
+
 
 = render 'layouts/sidebar'
 
@@ -22,13 +25,15 @@
 
   #post_actions
     - if @post.draft
-      = link_to "Publish", publish_post_path(@post.id), class: "pure-button button-success"
+      = link_to ("<i class='fa fa-toggle-off fa-fw'></i> Publish").html_safe, publish_post_path(@post.id), class: "pure-button button-success"
     - else
-      = link_to "Unpublish", unpublish_post_path(@post.id), class: "pure-button button-warning"
-    = link_to "Delete", post_path(@post.id), method: "delete", class: "pure-button button-error"
+      = link_to ("<i class='fa fa-toggle-on fa-fw'></i> Unpublish").html_safe, unpublish_post_path(@post.id), class: "pure-button button-warning"
+    = link_to ("<i class='fa fa-trash fa-fw'></i> Delete").html_safe, post_path(@post.id), method: "delete", class: "pure-button button-error"
 
   #post{:contenteditable => "true"}
     = @post.post.html_safe
+
+  
 
   #hidden_submit{:style => "display:none"}
     = form_for(@post, url: post_path(@post.id), remote: true) do |f|
@@ -38,11 +43,16 @@
 
   = render 'layouts/disqus'
 
+#insert-plugin
+  %i.fa.fa-plus-circle.fa-fw.insert-click
+  %i.fa.fa-camera.fa-fw.hide.insert-option#insert-image
+  %i.fa.fa-link.fa-fw.hide.insert-option#insert-link
+
 #save
   Saved
 
 #admin_fixed
-  = link_to "logout", logout_path, method: "delete", id: "logout_button"
+  = link_to ("<i class='fa fa-sign-out fa-fw'></i> logout").html_safe, logout_path, method: "delete", id: "logout_button"
 
 :javascript
   var editor = new MediumEditor('#post', {
