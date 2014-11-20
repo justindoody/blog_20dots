@@ -26,6 +26,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @image = Image.new
     render :layout =>  'post'
   end
 
@@ -56,6 +57,6 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.fetch(:post, {}).permit(:post, :title, :cover_photo)
+      params.fetch(:post, {}).permit(:post, :title, :cover_photo, :post_images)
     end
 end

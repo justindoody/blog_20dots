@@ -244,20 +244,47 @@ body.post {
     position: absolute;
     display: none;
     left: 340px;
-    top: 400px;
     z-index: 0;
   }
   #insert-plugin i {
-    font-size: 26px;
-    line-height: 26px;
-    height: 26px;
-    width: 40px;
+    position: absolute;
+    top: 0px;
+    font-size: 36px;
+    line-height: 36px;
+    height: 36px;
+    width: auto;
   }
   .hide {
     opacity: 0;
     -webkit-transition: opacity .3s linear;
     transition: opacity .3s ease-in-out;
   }
+
+  .post_image_form {
+    position: absolute;
+    display: hidden !important;
+  }
+
+  #insert-plugin input {
+    opacity: 0;
+    position: absolute;
+    left: 73px;
+    height: 36px;
+    width: 39px;
+    z-index: 2;
+  }
+  #insert-link {
+    left: 130px;
+  }
+  .fa-camera {
+    position: absolute;
+    left: 73px;
+    z-index: 1;
+  }
+  #insert-plugin input:hover + .fa-camera {
+    color: #3d3d3d;
+  }
+
   .insert-click:active ~ i {
     display: inline-block;
   }

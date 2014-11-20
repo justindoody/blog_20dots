@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   resources :posts do
+    resources :images
     member do
       get :publish, :unpublish
     end

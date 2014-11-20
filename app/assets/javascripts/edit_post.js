@@ -45,7 +45,7 @@ function edit() {
       
       var h = $(fx()).offset().top;
       if (fx().innerHTML == "<br>"){
-        $("#insert-plugin").css('top', (h - 17) + 'px').css('display', "block");
+        $("#insert-plugin").css('top', (h) + 'px').css('display', "block");
       } else {
         $("#insert-plugin").css('display', "none");
       }
@@ -76,6 +76,11 @@ function edit() {
 
     $("#cover-icon-container > input").change(function(){
         $(".cover_form").submit();
+    });
+
+    $(".post_image_form > input").change(function(){
+      console.log("it changed nigga");
+        $(".post_image_form").submit();
     });
 
   }

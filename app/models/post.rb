@@ -3,6 +3,8 @@ class Post < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => :slugged
 
+  has_many :images
+
   # Using CarrierWave gem to handle image uploads for posts
   mount_uploader :cover_photo, CoverPhotoUploader
 end

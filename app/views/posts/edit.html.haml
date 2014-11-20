@@ -34,6 +34,7 @@
     = @post.post.html_safe
 
   
+  
 
   #hidden_submit{:style => "display:none"}
     = form_for(@post, url: post_path(@post.id), remote: true) do |f|
@@ -45,7 +46,11 @@
 
 #insert-plugin
   %i.fa.fa-plus-circle.fa-fw.insert-click
-  %i.fa.fa-camera.fa-fw.hide.insert-option#insert-image
+  = form_for(@image, url: post_images_path(@post.id), html: { multipart: true, class: "edit_post post_image_form" }) do |f|
+    = f.file_field :name, accept: 'image/jpeg,image/gif,image/png'
+    %i.fa.fa-camera.fa-fw.hide.insert-option#insert-image
+    = f.submit  "Add Image", class: "cover-form-button"
+     
   %i.fa.fa-link.fa-fw.hide.insert-option#insert-link
 
 #save
