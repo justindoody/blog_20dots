@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     if logged_in?
       redirect_to admin_path
     end
-    @posts = Post.where(draft: false).order(created_at: :desc)
+    @posts = Post.where(draft: false).order(published_at: :desc)
   end
 
   def show
@@ -45,6 +45,7 @@ class PostsController < ApplicationController
   def publish
     @post = Post.find(params[:id])
     @post.update_attributes(draft: false)
+    @post.update_attribute(:published_at, Time.now)
     redirect_to edit_post_path(@post.id)
   end
 

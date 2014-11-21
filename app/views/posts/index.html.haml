@@ -9,7 +9,7 @@
 
           .post_title
             .date
-              = post.created_at.strftime("%B %d, %Y")
+              = post.published_at.strftime("%B %d, %Y")
             = post.title.strip
 
 %svg

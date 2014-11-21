@@ -167,6 +167,13 @@ body.post {
 #disqus_thread {
   margin-top: 100px;
 }
+
+#updated_post {
+  width: 100%;
+  margin-bottom: 20px;
+  color: #aaaaaa;
+  font-style: italic;
+}
 /*#disqus_thread:after{
   content: "";
   display: block;
