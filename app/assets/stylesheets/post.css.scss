@@ -6,10 +6,6 @@ body.post {
     clip: rect(20px,100%,100%,20px);
   }
 
-  #post p {
-    text-indent: 50px;
-  }
-
   #blurry {
     -webkit-filter: blur(7px) brightness(.85);
     z-index: 0;
@@ -60,6 +56,7 @@ body.post {
     margin-top: 60px;
     font-weight: 100;
     outline: 0;
+    min-height: 800px;
     letter-spacing: .02rem;
     color: #333333;
   }
@@ -135,7 +132,7 @@ body.post {
 #disqus_thread {
   margin-top: 100px;
 }
-#disqus_thread:after{
+/*#disqus_thread:after{
   content: "";
   display: block;
   height: 55px;
@@ -143,4 +140,4 @@ body.post {
   position: absolute;
   bottom: 0px;
   background:white;
-}
+}*/

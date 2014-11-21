@@ -1,0 +1,6 @@
+$('#insert-maybe').after('<img src="<%= @image.name.url %>" id="<%= @image.id %>"  class="post-image img-left-text-flow">');
+$('#insert-maybe').remove();
+
+$('#post_post').val($('#post').html().trim());
+$('#hidden_button').click();
+$('#save').slideDown().delay(500).fadeOut();

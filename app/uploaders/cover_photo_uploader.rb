@@ -2,8 +2,17 @@
 
 class CoverPhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
+  
   process resize_to_fill: [2000, 500]
   process :convert => 'jpg'
+  process :quality => 70
+  def quality(percentage)
+    manipulate! do |img|
+      img.quality(percentage.to_s)
+      img = yield(img) if block_given?
+      img
+    end
+  end
 
   
   #version :blur do
@@ -57,8 +66,8 @@ class CoverPhotoUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    "#{Time.now.to_i.to_s}_cover.jpg" if original_filename
+  end
 
 end

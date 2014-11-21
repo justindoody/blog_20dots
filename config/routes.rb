@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :posts do
-    resources :images
+    resources :images, only: [:create, :destroy]
     member do
       get :publish, :unpublish
     end

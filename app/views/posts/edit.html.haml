@@ -31,10 +31,7 @@
     = link_to ("<i class='fa fa-trash fa-fw'></i> Delete").html_safe, post_path(@post.id), method: "delete", class: "pure-button button-error"
 
   #post{:contenteditable => "true"}
-    = @post.post.html_safe
-
-  
-  
+    = @post.post.html_safe 
 
   #hidden_submit{:style => "display:none"}
     = form_for(@post, url: post_path(@post.id), remote: true) do |f|
@@ -46,12 +43,19 @@
 
 #insert-plugin
   %i.fa.fa-plus-circle.fa-fw.insert-click
-  = form_for(@image, url: post_images_path(@post.id), html: { multipart: true, class: "edit_post post_image_form" }) do |f|
+  = form_for(@image, url: post_images_path(@post.id), remote: true, html: { multipart: true, class: "edit_post post_image_form" }) do |f|
     = f.file_field :name, accept: 'image/jpeg,image/gif,image/png'
     %i.fa.fa-camera.fa-fw.hide.insert-option#insert-image
-    = f.submit  "Add Image", class: "cover-form-button"
+    = f.submit  "Add Image", id: "insert-plugin-image-button"
      
   %i.fa.fa-link.fa-fw.hide.insert-option#insert-link
+
+.image-edit-container
+  %i.fa.fa-align-left.fa-fw.image-edit
+  %i.fa.fa-align-center.fa-fw.image-edit
+  %i.fa.fa-align-right.fa-fw.image-edit
+  %i.fa.fa-expand.fa-fw.image-edit
+  %i.fa.fa-trash.fa-fw.image-edit
 
 #save
   Saved
@@ -61,5 +65,5 @@
 
 :javascript
   var editor = new MediumEditor('#post', {
-    buttons: ['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'unorderedlist', 'justifyLeft', 'justifyCenter'],
+    buttons: ['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote', 'unorderedlist', 'justifyLeft', 'justifyCenter', 'indent', 'outdent'],
   });

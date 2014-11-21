@@ -31,7 +31,9 @@ function parallax() {
 		}
 
 		function sidebar_location(scrolledY) {
-			if (scrolledY > $("#sidebar").data("top") && $(window).width() > 970) { // Freeze sidebar once scrolled past header
+			console.log($(window).height());
+			if (scrolledY > ($(window).height()/2) && $(window).width() > 970) { // Freeze 
+			//if (scrolledY > $("#sidebar").data("top") && $(window).width() > 970) { // Freeze sidebar once scrolled past header
 				$('#sidebar').css({
 					'position'	: 'fixed',
 					'top'		: '0',

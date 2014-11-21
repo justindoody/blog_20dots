@@ -272,11 +272,12 @@ body.post {
     height: 36px;
     width: 39px;
     z-index: 2;
+    overflow: hidden;
   }
   #insert-link {
     left: 130px;
   }
-  .fa-camera {
+  #insert-plugin .fa-camera {
     position: absolute;
     left: 73px;
     z-index: 1;
@@ -305,5 +306,66 @@ body.post {
   #insert-plugin {
     color: #adadad;
   }
+
+  #insert-plugin-image-button {
+    display: none;
+  }
+
+  /* >>>> Image Editing <<<< */
+
+  .image-edit-container {
+    position: absolute;
+    background-color:rgba(0,0,0,0.7);
+    z-index: 6;
+    left: 0px;
+    top: 0px;
+  }
+
+  .image-edit {
+    display: block;
+    float: left;
+    margin: 4px 4px;
+    font-size: 20px;
+    line-height: 20px;
+    color: #fff;
+    opacity: .5;
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+  }
+
+  .image-edit:hover {
+    opacity: 1;
+  }
+
+  /* >>>> Image Display Options <<<< */
+  
+  #post img {
+
+  }
+
+  .img-left-text-flow {
+    float: left;
+    margin: 20px 20px 20px 0px;
+  }
+
+  .img-right-text-flow {
+    float: right;
+    margin: 20px 0px 20px 20px;
+  }
+
+  .img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .img-wide {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+
 
 }

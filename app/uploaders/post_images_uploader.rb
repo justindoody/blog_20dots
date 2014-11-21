@@ -2,7 +2,17 @@
 
 class PostImagesUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
+
   process resize_to_limit: [800, 1600]
+  process :convert => 'jpg'
+  process :quality => 90
+  def quality(percentage)
+    manipulate! do |img|
+      img.quality(percentage.to_s)
+      img = yield(img) if block_given?
+      img
+    end
+  end
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -21,23 +31,16 @@ class PostImagesUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  # Process files as they are uploaded:
-  # process :scale => [200, 300]
-  #
-  # def scale(width, height)
-  #   # do something
-  # end
-
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-   def extension_white_list
-     %w(jpg jpeg gif png)
+  def extension_white_list
+    %w(jpg jpeg gif png)
   end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    "#{Time.now.to_i.to_s}_post_#{model.post_id}.jpg" if original_filename
+  end
 
 end
