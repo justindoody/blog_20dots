@@ -335,36 +335,4 @@ body.post {
     opacity: 1;
   }
 
-  /* >>>> Image Display Options <<<< */
-  
-  #post img {
-
-  }
-
-  .img-left-text-flow {
-    float: left;
-    margin: 20px 20px 20px 0px;
-  }
-
-  .img-right-text-flow {
-    float: right;
-    margin: 20px 0px 20px 20px;
-  }
-
-  .img-center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-  .img-wide {
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-
-
 }
