@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @image = Image.new
-    render :layout =>  'post'
+    render :layout =>  'post_admin'
   end
 
   def update

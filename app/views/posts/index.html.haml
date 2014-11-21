@@ -4,8 +4,8 @@
       %li
         = link_to post, class: "post_container cover_photo" do
           - if !post.cover_photo.url.nil?
-            %img.bg.blurry{:src => "#{post.cover_photo.url}", :style => "filter: url('#blur_svg')" }
-            %img.bg.crisp{:src => "#{post.cover_photo.url}"}
+            %img.bg.blurry{:src => "#{post.cover_photo.url}", :alt => "cover image blurred", :style => "filter: url('#blur_svg')" }
+            %img.bg.crisp{:src => "#{post.cover_photo.url}", :alt => "cover image"}
 
           .post_title
             .date

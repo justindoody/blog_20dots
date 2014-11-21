@@ -1,5 +1,6 @@
 - provide(:title, "| #{@post.title}")
 
+
 #header_wrapper
   - if !@post.cover_photo.url.nil?
     %img.bg#crisp{:src => "#{@post.cover_photo.url}"}

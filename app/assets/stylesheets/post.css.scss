@@ -3,7 +3,7 @@ body.post {
     position: absolute;
     left: -20px;
     top: -20px;
-    clip: rect(20px,100%,100%,20px);
+    clip: rect(20px, auto, auto, 20px);
   }
 
   #blurry {
