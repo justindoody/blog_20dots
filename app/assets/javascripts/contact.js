@@ -1,6 +1,4 @@
-$(document).on("page:change", contact);
-
-function contact() {
+$(function() {
   $('#modal-wrapper').click(function () {
     $('#sidebar, #all_posts, #content, #header_wrapper').removeClass('blurred');
     $('.modal').removeClass('bounceIn').addClass('animated bounceOut');
@@ -14,4 +12,4 @@ function contact() {
     $('#modal-wrapper').show();
     $('.modal').removeClass('bounceOut').delay(200).show().addClass('animated bounceIn');
   });
-}
+});
