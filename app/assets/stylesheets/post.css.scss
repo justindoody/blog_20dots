@@ -112,6 +112,18 @@ body.post {
     font-size: 16px;
   }
 
+  #mc_embed_signup .email {
+    height: 26px;
+    border: 4px solid #f4f4f4;
+    padding-left: 15px;
+  }
+  #mc_embed_signup .email:focus {
+    height: 26px;
+    border: 4px solid #a8d2ff;
+    padding-left: 15px;
+  }
+  
+
   .white {
     background-color: #fff;
     margin-top: 0px;
@@ -179,12 +191,3 @@ body.post {
   color: #aaaaaa;
   font-style: italic;
 }
-/*#disqus_thread:after{
-  content: "";
-  display: block;
-  height: 55px;
-  width: 100%;
-  position: absolute;
-  bottom: 0px;
-  background:white;
-}*/
