@@ -1,5 +1,5 @@
 #sidebar
-  = link_to "", feed_path, id: "rss_icon"
+  = link_to "", feed_path, id: "rss_icon", html: {onclick: "ga('send', 'event', 'button', 'click', 'rss', 1);"}
   #pic_hello
     = image_tag("face_circle.jpg", id: "face_circle")
   
@@ -17,6 +17,6 @@
     = link_to ("<i class='fa fa-book'></i> all posts").html_safe, posts_path, class: "sidebar_button"
 
   .button_container
-    %a.sidebar_button{:id => "contact_button", :href => ""} <i class='fa fa-envelope'></i> contact
+    %a.sidebar_button{:id => "contact_button", :href => "", :onclick => "ga('send', 'event', 'button', 'click', 'contact', 1);"} <i class='fa fa-envelope'></i> contact
 
   
