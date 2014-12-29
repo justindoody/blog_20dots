@@ -27,3 +27,6 @@
 
 # Remove the cover image upload directory
 /public/uploads/
+
+# Remove the deploy script, not totally necessary but whatevs
+/config/deploy.rb
