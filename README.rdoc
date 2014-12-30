@@ -4,5 +4,5 @@ Such custom. Many words.
 
 Using mina to deploy pretty smoothly... 
 
-* Don't forget to install imagemagick for image resizing on uplaod.
+* Don't forget to install imagemagick for image resizing on upload.
 

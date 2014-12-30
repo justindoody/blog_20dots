@@ -20,6 +20,7 @@
 
 # Hide the production database details
 /config/database.yml
+/config/secrets.yml
 
 # Hide the sublime project file
 20dots.sublime-project
