@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.friendly.find(params[:id])
-    render :layout =>  'post'
+    render layout: 'post'
   end
 
   def new
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @image = Image.new
-    render :layout =>  'post_admin'
+    render layout: 'post_admin'
   end
 
   def update

@@ -4,8 +4,8 @@ class PostImagesUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   process resize_to_limit: [800, 1600]
-  process :convert => 'jpg'
-  process :quality => 90
+  process convert: 'jpg'
+  process quality: 90
   def quality(percentage)
     manipulate! do |img|
       img.quality(percentage.to_s)

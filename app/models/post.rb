@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   # FriendlyId gem to make post urls include the title instead of just an id number
   extend FriendlyId
-  friendly_id :title, :use => :slugged
+  friendly_id :title, use: :slugged
 
   has_many :images, dependent: :destroy
 

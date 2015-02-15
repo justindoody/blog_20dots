@@ -4,8 +4,8 @@ class CoverPhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
   process resize_to_fill: [2000, 500]
-  process :convert => 'jpg'
-  process :quality => 70
+  process convert: 'jpg'
+  process quality: 70
   def quality(percentage)
     manipulate! do |img|
       img.quality(percentage.to_s)
