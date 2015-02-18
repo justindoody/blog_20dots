@@ -31,3 +31,9 @@
 
 # Remove the deploy script, not totally necessary but whatevs
 /config/deploy.rb
+
+# Ignore other things
+*swp
+*~
+.project
+.DS_Store
