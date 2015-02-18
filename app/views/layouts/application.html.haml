@@ -1,29 +1,13 @@
 !!! 5
 %html
   %head
-    %title
-      = "20dots #{yield(:title)}"
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    %link{:rel => "stylesheet", :href => "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"}
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true, async: true
-    = auto_discovery_link_tag :atom, "/feed"
-    = auto_discovery_link_tag :rss, "/feed.rss"
-    = csrf_meta_tags
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    = favicon_link_tag 'favicon.ico'
-
+    = render 'layouts/head'
+    = auto_discovery_link_tag :atom, '/feed'
+    = auto_discovery_link_tag :rss, '/feed.rss'
+    = yield :head
 
   %body.all_posts
     = render 'layouts/sidebar'
     = yield
-
     = render 'layouts/modal'
-
-  :javascript
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-2434152-7', 'auto');
-    ga('send', 'pageview');
+    = render 'layouts/google_analytics'

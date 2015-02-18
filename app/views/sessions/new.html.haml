@@ -1,32 +1,16 @@
-- provide(:title, "Log In")
-= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true
+- provide(:title, '| Log In')
+- content_for :head do
+  = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track' => true
 
 #login
   #login_container
     - flash.each do |message_type, message|
-      %div{:class => "alert alert-#{message_type}"}
+      %div{ class: "alert alert-#{message_type}" }
         = message
-    = form_for(:session, url: sessions_path, html: {class: "pure-form"}) do |f|
+    = form_for(:session, url: sessions_path, html: { class: 'pure-form' }) do |f|
 
-      = f.password_field :password, placeholder: "Password"
+      = f.password_field :password, placeholder: 'Password'
 
-      = f.submit "Log In", class: "pure-button pure-button-primary"
+      = f.submit 'Log In', class: 'pure-button pure-button-primary'
 
-#all_posts
-  %ul.flip
-    - @posts.each do |post|
-      %li
-        = link_to post, class: "post_container cover_photo" do
-          %img.bg.blurry{:src => "#{post.cover_photo.url}", :style => "filter: url('#blur_svg')" }
-          %img.bg.crisp{:src => "#{post.cover_photo.url}"}
-
-          .post_title
-            .date
-              = post.created_at.strftime("%B %d, %Y")
-            = post.title.strip
-
-%svg
-  %filter#blur_svg{"color-interpolation-filters" => "sRGB"}
-    <feGaussianBlur stdDeviation="8"/>
-    %feComponentTransfer
-      <feFuncA type="discrete" tableValues="1 1"/>
+= render partial: 'posts/all_posts', locals: { admin: false }

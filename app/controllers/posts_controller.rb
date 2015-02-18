@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.friendly.find(params[:id])
+    @updated_since_published = @post.updated_at.strftime('%m%d%y').to_i != @post.published_at.strftime('%m%d%y').to_i
     render layout: 'post'
   end
 
@@ -27,7 +28,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @image = Image.new
-    render layout: 'post_admin'
+    render layout: 'post'
   end
 
   def update

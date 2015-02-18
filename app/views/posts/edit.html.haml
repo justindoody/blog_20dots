@@ -1,44 +1,44 @@
 - provide(:title, "| #{@post.title}")
-
+- content_for :head do
+  = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'admin', defer: true
 
 #header_wrapper
-  - if !@post.cover_photo.url.nil?
-    %img.bg#crisp{:src => "#{@post.cover_photo.url}"}
-    %img.bg#blurry{:src => "#{@post.cover_photo.url}"}
+  = render 'show_cover'
   #header_container_text
-    
+
     #post_height.post_title
       .date
-        = @post.created_at.strftime("%B %d, %Y")
-      #post_title_t{:contenteditable => "true"}
+        = @post.created_at.strftime('%B %d, %Y')
+      #post_title_t{ contenteditable: 'true' }
         = @post.title
     #cover_edit
       = form_for(@post, url: post_path(@post.id), html: { multipart: true, class: "edit_post cover_form" }) do |f|
         #cover-icon-container
           = f.file_field :cover_photo, accept: 'image/jpeg,image/gif,image/png'
           %i.fa.fa-camera.cover-icon
-        = f.submit  "Upload Cover", class: "cover-form-button"
+        = f.submit 'Upload Cover', class: 'cover-form-button'
 
 
 = render 'layouts/sidebar'
 
-#content{:data => {:controller => "edit"}}
+#content{ data: { controller: 'edit' } }
 
   #post_actions
     - if @post.draft
-      = link_to ("<i class='fa fa-toggle-off fa-fw'></i> Publish").html_safe, publish_post_path(@post.id), class: "pure-button button-success"
+      = link_to ("<i class='fa fa-toggle-off fa-fw'></i> Publish").html_safe, publish_post_path(@post.id), class: 'pure-button button-success'
     - else
-      = link_to ("<i class='fa fa-toggle-on fa-fw'></i> Unpublish").html_safe, unpublish_post_path(@post.id), class: "pure-button button-warning"
-    = link_to ("<i class='fa fa-trash fa-fw'></i> Delete").html_safe, post_path(@post.id), method: "delete", class: "pure-button button-error"
+      = link_to ("<i class='fa fa-toggle-on fa-fw'></i> Unpublish").html_safe, unpublish_post_path(@post.id), class: 'pure-button button-warning'
+    = link_to ("<i class='fa fa-trash fa-fw'></i> Delete").html_safe, post_path(@post.id), method: "delete", class: 'pure-button button-error'
 
-  #post{:contenteditable => "true"}
-    = @post.post.html_safe 
+  #post{ contenteditable: 'true' }
+    = @post.post.html_safe
 
-  #hidden_submit{:style => "display:none"}
+  #hidden_submit{ style: 'display:none' }
     = form_for(@post, url: post_path(@post.id), remote: true) do |f|
       = f.text_field :post
       = f.text_field :title
-      = f.submit "submit", id: "hidden_button"
+      = f.submit 'submit', id: 'hidden_button'
 
   = render 'layouts/disqus'
 
@@ -47,8 +47,8 @@
   = form_for(@image, url: post_images_path(@post.id), remote: true, html: { multipart: true, class: "edit_post post_image_form" }) do |f|
     = f.file_field :name, accept: 'image/jpeg,image/gif,image/png'
     %i.fa.fa-camera.fa-fw.hide.insert-option#insert-image
-    = f.submit  "Add Image", id: "insert-plugin-image-button"
-     
+    = f.submit 'Add Image', id: 'insert-plugin-image-button'
+
   %i.fa.fa-link.fa-fw.hide.insert-option#insert-link
 
 .image-edit-container
@@ -62,7 +62,7 @@
   Saved
 
 #admin_fixed
-  = link_to ("<i class='fa fa-sign-out fa-fw'></i> logout").html_safe, logout_path, method: "delete", id: "logout_button"
+  = link_to ("<i class='fa fa-sign-out fa-fw'></i> logout").html_safe, logout_path, method: 'delete', id: 'logout_button'
 
 :javascript
   var editor = new MediumEditor('#post', {

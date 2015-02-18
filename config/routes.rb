@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'posts#index'
 
   resources :posts do
     resources :images, only: [:create, :destroy]
@@ -7,13 +8,10 @@ Rails.application.routes.draw do
     end
   end
   get 'admin' => 'posts#admin'
-
-  root 'posts#index'
    
-
   get    'login'    => 'sessions#new'
   delete 'logout'   => 'sessions#destroy'
   resources :sessions, only: [:new, :create, :destroy]
 
-  get "/feed" => "static_pages#feed", :as => "feed", :defaults => { :format => 'atom' }
+  get "/feed" => "static_pages#feed", as: "feed", defaults: { format: 'atom' }
 end

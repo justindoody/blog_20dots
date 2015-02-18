@@ -1,0 +1,23 @@
+#all_posts
+  %ul.flip
+    - @posts.each do |post|
+      %li
+        - path = admin ? edit_post_path(post.id) : post
+        = link_to path, class: 'post_container cover_photo' do
+          - unless post.cover_photo.url.nil?
+            %img.bg.blurry{ src: "#{ post.cover_photo.url}", style: "filter: url('#blur_svg')", alt: 'cover image blurred' }
+            %img.bg.crisp{ src: "#{post.cover_photo.url}", alt: 'cover image' }
+
+          - if post.draft && admin
+            .draft
+              Draft
+          .post_title
+            .date
+              = post.created_at.strftime('%B %d, %Y')
+            = post.title.strip
+
+%svg
+  %filter#blur_svg{ 'color-interpolation-filters' => 'sRGB' }
+    <feGaussianBlur stdDeviation="8"/>
+    %feComponentTransfer
+      <feFuncA type="discrete" tableValues="1 1"/>

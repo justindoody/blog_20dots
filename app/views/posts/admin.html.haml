@@ -1,22 +1,14 @@
-= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true
+- content_for :head do
+  = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track' => true
 
-#all_posts
-  %ul.flip
-    - @posts.each do |post|
-      %li
-        - p = "p" + post.id.to_s
-        = link_to edit_post_path(post.id), class: "post_container cover_photo" do
-          %img.bg.blurry{:src => "#{post.cover_photo.url}", :style => "filter: url('#blur_svg')" }
-          %img.bg.crisp{:src => "#{post.cover_photo.url}"}
-          
-          - if post.draft
-            .draft
-              Draft
-          .post_title
-            .date
-              = post.created_at.strftime("%B %d, %Y")
-            = post.title
+= render partial: 'all_posts', locals: { admin: true }
 
 #admin_fixed
-= link_to ("<i class='fa fa-pencil fa-fw'></i> new post").html_safe, new_post_path, id: "new_post_button"
-= link_to ("<i class='fa fa-sign-out fa-fw'></i> logout").html_safe, logout_path, method: "delete", id: "logout_button"
+
+= link_to new_post_path, id: 'new_post_button' do
+  %i.fa.fa-pencil.fa-fw
+  new post
+
+= link_to logout_path, method: 'delete', id: 'logout_button' do
+  %i.fa.fa-sign-out.fa-fw
+  logout
