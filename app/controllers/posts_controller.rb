@@ -1,10 +1,8 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, only: [:admin, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:admin, :edit, :update, :destroy, :new]
 
   def index
-    if logged_in?
-      redirect_to admin_path
-    end
+    redirect_to admin_path if logged_in?
     @posts = Post.where(draft: false).order(published_at: :desc)
   end
 

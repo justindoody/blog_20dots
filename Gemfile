@@ -57,9 +57,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
-  # gem 'minitest-reporters' # Create customizable Minitest output formats.
-  # gem 'mini_backtrace' # Removes RVM warnings in test reports, edited config/initializers/backgtrace
-  # gem 'guard-minitest' # Automatically runs tests
+  gem 'database_cleaner'
 end
 
 group :production do
