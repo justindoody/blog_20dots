@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, only: [:admin, :edit, :update, :destroy, :new]
+  before_action :logged_in_user, except: [:index, :show]
 
   def index
     redirect_to admin_path if logged_in?
@@ -8,12 +8,12 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.friendly.find(params[:id])
-    @updated_since_published = @post.updated_at.strftime('%m%d%y').to_i != @post.published_at.strftime('%m%d%y').to_i
+    @updated_since_published = @post.updated_since_published
     render layout: 'post'
   end
 
   def new
-    @post = Post.create(title: "A New Post", post: "Start typing...")
+    @post = Post.create_default
     redirect_to root_url
   end
 
@@ -43,14 +43,13 @@ class PostsController < ApplicationController
 
   def publish
     @post = Post.find(params[:id])
-    @post.update_attributes(draft: false)
-    @post.update_attribute(:published_at, Time.now)
+    @post.publish
     redirect_to edit_post_path(@post.id)
   end
 
   def unpublish
     @post = Post.find(params[:id])
-    @post.update_attributes(draft: true)
+    @post.unpublish
     redirect_to edit_post_path(@post.id)
   end
 

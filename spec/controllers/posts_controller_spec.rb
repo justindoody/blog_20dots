@@ -9,6 +9,10 @@ describe PostsController, type: :controller do
                           post: 'Start typing...', 
                           draft: false, 
                           published_at: Time.now)
+
+    @post2 = Post.create( title: 'A Second Post', 
+                          post: 'Short article.', 
+                          draft: true)
   end
 
   describe 'GET index' do
@@ -118,7 +122,7 @@ describe PostsController, type: :controller do
       end
 
       it 'loads all published posts into @posts' do
-        expect(assigns(:posts)).to match_array([@post1])
+        expect(assigns(:posts)).to match_array([@post1, @post2])
       end
     end
   end
@@ -146,7 +150,10 @@ describe PostsController, type: :controller do
 
   describe 'GET edit' do
     context 'when public' do
-
+      it 'redirects to login url' do
+        get :edit, id: @post1.id
+        expect(response).to redirect_to(login_url)
+      end
     end
 
     context 'when admin' do
@@ -164,40 +171,71 @@ describe PostsController, type: :controller do
 
   describe 'PUT update' do
     context 'when public' do
+      before(:each){ post :update, id: @post2.id }
 
+      it 'redirects to login url' do
+        expect(response).to redirect_to(login_url)
+      end
     end
     
     context 'when admin' do
-      before(:each){ login; get :edit, id: @post1.id }
+      before(:each) do
+        login
+        post :update, id: @post2.id, post: {title: "Such Post", post: "Really good."}
+      end
 
-      # it 'redirects back to edit post url' do
-      #   expect(response).to redirect_to(edit_post_path(@post1.id))
-      # end
+      it 'sets a new title' do
+        expect(assigns(:post).title).to eq "Such Post"
+      end
+
+      it 'sets a new friendly id' do
+        expect(assigns(:post).slug).to eq "such-post"
+      end
+
+      it 'updates the body content' do
+        expect(assigns(:post).post).to eq "Really good."
+      end
+
+      it 'redirects back to edit post url' do
+        expect(response).to redirect_to(edit_post_path(@post2.id))
+      end
     end
   end
 
   # I realize publish and unpublish should be posts not gets
   describe 'GET publish' do
     context 'when public' do
+      before(:each){ get :publish, id: @post2.id }
 
+      it 'redirects to login url' do
+        expect(response).to redirect_to(login_url)
+      end
     end
     
     context 'when admin' do
-      before(:each){ login; get :publish, id: @post1.id }
+      before(:each){ login; get :publish, id: @post2.id }
 
       it 'redirects back to edit post url' do
-        expect(response).to redirect_to(edit_post_path(@post1.id))
+        expect(response).to redirect_to(edit_post_path(@post2.id))
       end
 
       it 'updates draft to false' do
         expect(assigns(:post).draft).to eq false
+      end
+
+      it 'updates published time' do
+        expect(assigns(:post).published_at).not_to be_nil
       end
     end
   end
 
   describe 'GET unpublish' do
     context 'when public' do
+      before(:each){ get :unpublish, id: @post1.id }
 
+      it 'redirects to login url' do
+        expect(response).to redirect_to(login_url)
+      end
     end
     
     context 'when admin' do
