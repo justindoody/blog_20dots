@@ -52,10 +52,12 @@ gem 'remotipart', '~> 1.2'
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'capybara'
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'database_cleaner'
 end

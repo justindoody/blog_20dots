@@ -25,7 +25,7 @@ describe SessionsController, type: :controller do
         expect(response).to redirect_to(admin_path)
       end
 
-      it 'sets session user id' do
+      it 'sets admin session' do
         expect(session[:admin]).to eq true
       end
     end
