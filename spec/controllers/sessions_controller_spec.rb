@@ -26,7 +26,7 @@ describe SessionsController, type: :controller do
       end
 
       it 'sets session user id' do
-        expect(session[:user_id]).to eq @user.id
+        expect(session[:admin]).to eq true
       end
     end
 

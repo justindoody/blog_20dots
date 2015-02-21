@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, except: [:index, :show]
+  before_action :confirm_admin, except: [:index, :show]
+  before_action :load_post, only: [:destroy, :edit, :update, :publish, :unpublish]
 
   def index
     redirect_to admin_path if logged_in?
@@ -8,7 +9,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.friendly.find(params[:id])
-    @updated_since_published = @post.updated_since_published
+    @updated_since_published = @post.updated_since_published?
     render layout: 'post'
   end
 
@@ -18,19 +19,16 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to root_url
   end
 
   def edit
-    @post = Post.find(params[:id])
     @image = Image.new
     render layout: 'post'
   end
 
   def update
-    @post = Post.find(params[:id])
     @post.slug = nil
     if @post.update_attributes(post_params)
       redirect_to edit_post_path(@post.id)
@@ -42,13 +40,11 @@ class PostsController < ApplicationController
   end
 
   def publish
-    @post = Post.find(params[:id])
     @post.publish
     redirect_to edit_post_path(@post.id)
   end
 
   def unpublish
-    @post = Post.find(params[:id])
     @post.unpublish
     redirect_to edit_post_path(@post.id)
   end
@@ -57,5 +53,9 @@ class PostsController < ApplicationController
 
     def post_params
       params.fetch(:post, {}).permit(:post, :title, :cover_photo, :post_images)
+    end
+
+    def load_post
+      @post = Post.find params[:id]
     end
 end

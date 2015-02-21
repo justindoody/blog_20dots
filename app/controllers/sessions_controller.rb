@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = Users.first()
     if user && user.authenticate(params[:session][:password])
-      log_in user
+      log_in_admin
       redirect_to admin_path
     else
       flash[:danger] = "Wrong password, try again..."
