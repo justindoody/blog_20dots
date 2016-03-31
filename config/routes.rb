@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
   get 'admin' => 'posts#admin'
-   
+
   get    'login'    => 'sessions#new'
   delete 'logout'   => 'sessions#destroy'
   resources :sessions, only: [:new, :create, :destroy]

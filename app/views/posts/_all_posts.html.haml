@@ -4,7 +4,7 @@
       %li
         - path = admin ? edit_post_path(post.id) : post
         = link_to path, class: 'post_container cover_photo' do
-          - unless post.cover_photo.url.nil?
+          - if post.cover_photo.url.present?
             %img.bg.blurry{ src: "#{ post.cover_photo.url}", style: "filter: url('#blur_svg')", alt: 'cover image blurred' }
             %img.bg.crisp{ src: "#{post.cover_photo.url}", alt: 'cover image' }
 

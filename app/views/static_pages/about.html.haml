@@ -1,6 +1,6 @@
 - provide(:title, "| About")
 
-%style 
+%style
   -# Dynamically generating the css for the hover effect
   - if !@post.cover_photo.nil?
     = "#header_container\{background-image: url(' #{image_path("post_covers/" << @post.cover_photo << ".jpg")} ');}"
