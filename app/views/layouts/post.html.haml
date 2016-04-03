@@ -4,7 +4,7 @@
     = render 'layouts/head'
     = yield :head
 
-  %body.post{ data: { controller: 'parallax' } }
+  %body.post{ data: { controller: controller_name.camelize, action: action_name.camelize } }
     = yield
     = render 'layouts/modal'
     = render 'layouts/google_analytics'

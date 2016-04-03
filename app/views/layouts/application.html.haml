@@ -6,7 +6,7 @@
     = auto_discovery_link_tag :rss, '/feed.rss'
     = yield :head
 
-  %body.all_posts
+  %body.all_posts{ data: { controller: controller_name.camelize, action: action_name.camelize } }
     = render 'layouts/sidebar'
     = yield
     = render 'layouts/modal'

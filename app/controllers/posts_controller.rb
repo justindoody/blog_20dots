@@ -31,7 +31,10 @@ class PostsController < ApplicationController
   def update
     @post.slug = nil
     if @post.update_attributes(post_params)
-      redirect_to edit_post_path(@post.id)
+      respond_to do |format|
+        format.html { redirect_to edit_post_path(@post.id) }
+        format.js
+      end
     end
   end
 
