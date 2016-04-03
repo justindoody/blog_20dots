@@ -6,12 +6,17 @@ Rails.application.routes.draw do
     member do
       get :publish, :unpublish
     end
+
+    get :admin, on: :collection
   end
-  get 'admin' => 'posts#admin'
 
-  get    'login'    => 'sessions#new'
-  delete 'logout'   => 'sessions#destroy'
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: :none, path: '' do
+    collection do
+      get :logout
+      post :login
+      get :admin, action: :new
+    end
+  end
 
-  get "/feed" => "static_pages#feed", as: "feed", defaults: { format: 'atom' }
+  get :feed, to: "feed#data", as: "feed", defaults: { format: 'atom' }
 end

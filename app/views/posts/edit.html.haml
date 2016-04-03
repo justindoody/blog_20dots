@@ -5,8 +5,8 @@
 
 #header_wrapper
   = render 'show_cover'
-  #header_container_text
 
+  #header_container_text
     #post_height.post_title
       .date
         = @post.created_at.strftime('%B %d, %Y')
@@ -22,8 +22,7 @@
 
 = render 'layouts/sidebar'
 
-#content{ data: { controller: 'edit' } }
-
+#content
   #post_actions
     - if @post.draft
       = link_to ("<i class='fa fa-toggle-off fa-fw'></i> Publish").html_safe, publish_post_path(@post.id), class: 'pure-button button-success'
@@ -62,4 +61,4 @@
   Saved
 
 #admin_fixed
-  = link_to ("<i class='fa fa-sign-out fa-fw'></i> logout").html_safe, logout_path, method: 'delete', id: 'logout_button'
+  = link_to ("<i class='fa fa-sign-out fa-fw'></i> logout").html_safe, logout_sessions_path, id: 'logout_button'

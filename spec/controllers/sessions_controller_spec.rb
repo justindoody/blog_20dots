@@ -11,14 +11,14 @@ describe SessionsController do
     end
   end
 
-  describe 'POST create' do
+  describe 'POST login' do
     let!(:user) { Users.create(password_digest: BCrypt::Password.create("password", cost: 4)) }
 
     context 'with correct password' do
-      before { post :create, session: { password: "password" } }
+      before { post :login, session: { password: "password" } }
 
       it 'redirects to admin path' do
-        expect(response).to redirect_to(admin_path)
+        expect(response).to redirect_to(admin_posts_path)
       end
 
       it 'sets admin session' do
@@ -28,15 +28,15 @@ describe SessionsController do
 
     context 'with wrong password' do
       it 'redirects back to login path' do
-        post :create, session: { password: "wrong" }
-        expect(response).to redirect_to(login_path)
+        post :login, session: { password: "wrong" }
+        expect(response).to redirect_to(admin_sessions_path)
       end
     end
 
   end
 
-  describe 'DELETE destroy' do
-    before { delete :destroy }
+  describe 'GET logout' do
+    before { get :logout }
 
     it 'redirects to root' do
       expect(response).to redirect_to(root_path)

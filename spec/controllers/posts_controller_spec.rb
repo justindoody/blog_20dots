@@ -36,7 +36,7 @@ describe PostsController do
       it 'redirects to admin path' do
         login
         get :index
-        expect(response).to redirect_to(admin_path)
+        expect(response).to redirect_to(admin_posts_path)
       end
     end
   end
@@ -52,10 +52,6 @@ describe PostsController do
 
     it 'has a false updated_since_published flag' do
       expect(assigns(:updated_since_published)).to eq false
-    end
-
-    it 'renders the post layout' do
-      expect(response).to render_template('layouts/post')
     end
 
     it 'renders the show template' do
@@ -88,7 +84,7 @@ describe PostsController do
 
       it 'redirects to login url' do
         get :new
-        expect(response).to redirect_to(login_url)
+        expect(response).to redirect_to(admin_sessions_url)
       end
     end
   end
@@ -101,9 +97,9 @@ describe PostsController do
         expect(response.status).to eq(302)
       end
 
-      it 'redirects to login_url' do
+      it 'redirects to admin_sessions_url' do
         get :admin
-        expect(response).to redirect_to(login_url)
+        expect(response).to redirect_to(admin_sessions_url)
       end
     end
 
@@ -140,7 +136,7 @@ describe PostsController do
     context 'when public' do
       it 'redirects to login url' do
         delete :destroy, id: @post1.slug
-        expect(response).to redirect_to(login_url)
+        expect(response).to redirect_to(admin_sessions_url)
       end
     end
   end
@@ -149,7 +145,7 @@ describe PostsController do
     context 'when public' do
       it 'redirects to login url' do
         get :edit, id: @post1.id
-        expect(response).to redirect_to(login_url)
+        expect(response).to redirect_to(admin_sessions_url)
       end
     end
 
@@ -171,7 +167,7 @@ describe PostsController do
       before(:each){ post :update, id: @post2.id }
 
       it 'redirects to login url' do
-        expect(response).to redirect_to(login_url)
+        expect(response).to redirect_to(admin_sessions_url)
       end
     end
 
@@ -205,7 +201,7 @@ describe PostsController do
       before(:each){ get :publish, id: @post2.id }
 
       it 'redirects to login url' do
-        expect(response).to redirect_to(login_url)
+        expect(response).to redirect_to(admin_sessions_url)
       end
     end
 
@@ -231,7 +227,7 @@ describe PostsController do
       before(:each){ get :unpublish, id: @post1.id }
 
       it 'redirects to login url' do
-        expect(response).to redirect_to(login_url)
+        expect(response).to redirect_to(admin_sessions_url)
       end
     end
 

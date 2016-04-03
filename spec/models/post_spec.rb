@@ -1,5 +1,4 @@
 describe Post do
-
   it '.create_default' do
     post = build :default_post
     expect(Post.create_default).to be_instance_of(Post)

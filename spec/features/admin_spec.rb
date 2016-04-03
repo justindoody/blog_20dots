@@ -1,11 +1,16 @@
 describe 'admin processes', type: :feature, js: true do
+  def login_as_admin(password: 'password')
+    visit '/admin'
+    within('#login_container') do
+      fill_in 'Password', with: password
+    end
+    click_button 'Log In'
+  end
+
   context 'log in with wrong password' do
     it 'fails to log in' do
-      visit '/login'
-      within('#login_container') do
-        fill_in 'Password', with: "password"
-      end
-      click_button 'Log In'
+      create(:admin)
+      login_as_admin(password: 'wrongpass')
       expect(page).to have_content 'Wrong password'
     end
   end
@@ -13,11 +18,7 @@ describe 'admin processes', type: :feature, js: true do
   context 'log in with good password' do
     it 'successfully logs in and creates post' do
       create(:admin)
-      visit '/login'
-      within('#login_container') do
-        fill_in 'Password', with: "password"
-      end
-      click_button 'Log In'
+      login_as_admin
       expect(page).to have_content 'logout'
 
       post_count = Post.count

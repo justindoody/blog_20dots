@@ -1,6 +1,6 @@
-class StaticPagesController < ApplicationController
+class FeedController < ApplicationController
 
-  def feed
+  def data
     @posts = Post.where(draft: false)
 
     respond_to do |format|

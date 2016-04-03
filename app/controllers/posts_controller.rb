@@ -1,16 +1,16 @@
 class PostsController < ApplicationController
   before_action :confirm_admin, except: [:index, :show]
+  before_action :redirect_to_admin_if_logged_in, only: :index
   before_action :load_post, only: [:destroy, :edit, :update, :publish, :unpublish]
 
   def index
-    redirect_to admin_path if logged_in?
     @posts = Post.where(draft: false).order(published_at: :desc)
   end
 
   def show
     @post = Post.friendly.find(params[:id])
     @updated_since_published = @post.updated_since_published?
-    render layout: 'post'
+    @body_class = 'post'
   end
 
   def new
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
 
   def edit
     @image = Image.new
-    render layout: 'post'
+    @body_class = 'post'
   end
 
   def update
