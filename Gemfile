@@ -12,6 +12,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'haml'
 gem 'autoprefixer-rails'
+gem 'pure-css-rails'
 
 ### General
 gem 'friendly_id'
