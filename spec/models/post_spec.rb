@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe Post, type: :model do
+describe Post do
 
   it '.create_default' do
     post = build :default_post
@@ -27,5 +25,5 @@ describe Post, type: :model do
     post = create(:post_one)
     expect(post.updated_since_published?).to be true
   end
-  
+
 end

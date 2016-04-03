@@ -1,7 +1,7 @@
 - provide(:title, "| #{@post.title}")
 - content_for :head do
-  = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track' => true
-  = javascript_include_tag 'admin', defer: true
+  = stylesheet_link_tag 'admin/application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'admin/application', defer: true
 
 #header_wrapper
   = render 'show_cover'

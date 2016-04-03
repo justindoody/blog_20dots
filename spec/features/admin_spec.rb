@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe 'admin processes', type: :feature do
+describe 'admin processes', type: :feature, js: true do
   context 'log in with wrong password' do
     it 'fails to log in' do
       visit '/login'

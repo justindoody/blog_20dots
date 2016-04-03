@@ -1,8 +1,0 @@
--# Dynamically generating the css for the hover effect
-
--#- if !post.cover_photo.url.nil?
-  -#%style
-    -#= "#p#{post.id}\{ background-image: url('#{post.cover_photo.url}'); }"
-    -#= "#p#{post.id}:hover\{ background-image: url('#{post.cover_photo.blur.url}'); }"
-    -#= "#p#{post.id}:after\{ content: url('#{post.cover_photo.blur.url} '); display: none; }"
-    

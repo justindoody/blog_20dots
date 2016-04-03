@@ -45,12 +45,12 @@ function edit() {
         };
     })();
 
-    
+
     $("#post").focus();
     $('#save').hide();
-      
+
     $("#post").keyup(function() {
-      
+
       var h = $(fx()).offset().top;
       if (fx().innerHTML == "<br>"){
         $("#insert-maybe").removeAttr( "id" );
@@ -60,7 +60,7 @@ function edit() {
         $("#insert-plugin").css('display', "none");
         $("#insert-maybe").removeAttr( "id" );
       }
-      
+
       delay(function() {
         getContent();
         $('#hidden_button').click();

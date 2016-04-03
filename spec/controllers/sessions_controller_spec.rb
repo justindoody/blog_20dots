@@ -1,6 +1,4 @@
- require 'rails_helper'
-
-describe SessionsController, type: :controller do
+describe SessionsController do
   describe 'GET new' do
     before { get :new }
 
@@ -14,9 +12,7 @@ describe SessionsController, type: :controller do
   end
 
   describe 'POST create' do
-    before do 
-      @user = Users.create(password_digest: BCrypt::Password.create("password", cost: 4))
-    end
+    let!(:user) { Users.create(password_digest: BCrypt::Password.create("password", cost: 4)) }
 
     context 'with correct password' do
       before { post :create, session: { password: "password" } }

@@ -19,12 +19,13 @@
 /spring/*.pid
 
 # Hide the production database details
+.env
+.env.*
 /config/database.yml
-/config/secrets.yml
 
 # Hide the sublime project file
-20dots.sublime-project
-20dots.sublime-workspace
+*.sublime-project
+*.sublime-workspace
 
 # Remove the cover image upload directory
 /public/uploads/

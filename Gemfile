@@ -1,58 +1,46 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2'
+gem 'dotenv-rails'
+gem 'rails', '~> 4.2.6'
+
+### Assets
 gem 'sass-rails', '~> 5.0.1'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
-
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
-
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
-
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
 gem 'haml'
+gem 'autoprefixer-rails'
+
+### General
 gem 'friendly_id'
+gem 'bcrypt', '~> 3.1.7'
+gem 'builder' # RSS Feed
+gem 'carrierwave' # Image upload
+gem 'remotipart', '~> 1.2' # Allows asynch upload of files aka "multipart"
+gem 'mini_magick' # Image manipulation interface with ImageMagick
+gem 'jbuilder', '~> 2.0'
 
-# Used for creating the RSS Feed
-gem 'builder'
-
-# Image upload
-gem 'carrierwave'
-
-# Image manipulation gem to interface with ImageMagick
-gem 'mini_magick'
-
-# Allows asychronous upload of files aka "multipart"
-gem 'remotipart', '~> 1.2'
+group :development do
+  gem 'spring'
+  gem 'spring-commands-rspec'
+end
 
 group :development, :test do
-  # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
-  gem 'capybara'
   gem 'rails_best_practices'
 end
 
 group :test do
+  gem 'capybara'
+  gem 'capybara-screenshot'
   gem 'guard-rspec'
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
 end
 
 group :production do

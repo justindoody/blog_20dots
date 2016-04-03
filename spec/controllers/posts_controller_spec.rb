@@ -1,17 +1,14 @@
-require 'rails_helper'
-
-describe PostsController, type: :controller do
-
+describe PostsController do
   let(:login) { allow_any_instance_of(ApplicationController).to receive(:logged_in?).and_return(true) }
 
   before(:each) do
-    @post1 = Post.create( title: 'A New Post', 
-                          post: 'Start typing...', 
-                          draft: false, 
+    @post1 = Post.create( title: 'A New Post',
+                          post: 'Start typing...',
+                          draft: false,
                           published_at: Time.now)
 
-    @post2 = Post.create( title: 'A Second Post', 
-                          post: 'Short article.', 
+    @post2 = Post.create( title: 'A Second Post',
+                          post: 'Short article.',
                           draft: true)
   end
 
@@ -30,7 +27,7 @@ describe PostsController, type: :controller do
       end
 
       it 'loads all published posts into @posts' do
-        post2 = Post.create(title: 'A Second New Post', post: 'Start typing...')
+        Post.create(title: 'A Second New Post', post: 'Start typing...')
         expect(assigns(:posts)).to match_array([@post1])
       end
     end
@@ -96,7 +93,7 @@ describe PostsController, type: :controller do
     end
   end
 
-  
+
   describe 'GET admin' do
     context 'when public' do
       it 'has a 302 status code' do
@@ -177,7 +174,7 @@ describe PostsController, type: :controller do
         expect(response).to redirect_to(login_url)
       end
     end
-    
+
     context 'when admin' do
       before(:each) do
         login
@@ -211,7 +208,7 @@ describe PostsController, type: :controller do
         expect(response).to redirect_to(login_url)
       end
     end
-    
+
     context 'when admin' do
       before(:each){ login; get :publish, id: @post2.id }
 
@@ -237,7 +234,7 @@ describe PostsController, type: :controller do
         expect(response).to redirect_to(login_url)
       end
     end
-    
+
     context 'when admin' do
       before(:each){ login; get :unpublish, id: @post1.id }
 

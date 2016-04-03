@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = Users.first()
-    if user && user.authenticate(params[:session][:password])
-      log_in_admin
+    if Users.admin.authenticate(params[:session][:password])
+      login_admin
       redirect_to admin_path
+
     else
       flash[:danger] = "Wrong password, try again..."
       redirect_to login_path
@@ -15,8 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:user_id)
-    @current_user = nil
+    logout_admin
     redirect_to root_path
   end
 end
