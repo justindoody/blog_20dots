@@ -15,7 +15,7 @@ describe SessionsController do
     let!(:user) { Users.create(password_digest: BCrypt::Password.create("password", cost: 4)) }
 
     context 'with correct password' do
-      before { post :login, session: { password: "password" } }
+      before { post :login, params: { session: { password: "password" } } }
 
       it 'redirects to admin path' do
         expect(response).to redirect_to(admin_posts_path)
@@ -28,7 +28,7 @@ describe SessionsController do
 
     context 'with wrong password' do
       it 'redirects back to login path' do
-        post :login, session: { password: "wrong" }
+        post :login, params: { session: { password: "wrong" } }
         expect(response).to redirect_to(admin_sessions_path)
       end
     end

@@ -43,7 +43,7 @@ describe PostsController do
 
   describe 'GET show' do
     before :each do
-      get :show, id: @post1.slug
+      get :show, params: { id: @post1.slug }
     end
 
     it 'has a 200 status code' do
@@ -122,7 +122,7 @@ describe PostsController do
 
   describe 'DELETE destroy' do
     context 'when admin' do
-      before(:each){ login; delete :destroy, id: @post1.id }
+      before(:each){ login; delete :destroy, params: { id: @post1.id } }
 
       it 'deletes the post' do
         expect{Post.find(@post1.id)}.to raise_error(ActiveRecord::RecordNotFound)
@@ -135,7 +135,7 @@ describe PostsController do
 
     context 'when public' do
       it 'redirects to login url' do
-        delete :destroy, id: @post1.slug
+        delete :destroy, params: { id: @post1.slug }
         expect(response).to redirect_to(admin_sessions_url)
       end
     end
@@ -144,13 +144,13 @@ describe PostsController do
   describe 'GET edit' do
     context 'when public' do
       it 'redirects to login url' do
-        get :edit, id: @post1.id
+        get :edit, params: { id: @post1.id }
         expect(response).to redirect_to(admin_sessions_url)
       end
     end
 
     context 'when admin' do
-      before(:each){ login; get :edit, id: @post1.id }
+      before(:each){ login; get :edit, params: { id: @post1.id } }
 
       it 'has a 200 status code' do
         expect(response.status).to eq(200)
@@ -164,7 +164,7 @@ describe PostsController do
 
   describe 'PUT update' do
     context 'when public' do
-      before(:each){ post :update, id: @post2.id }
+      before(:each){ post :update, params: { id: @post2.id } }
 
       it 'redirects to login url' do
         expect(response).to redirect_to(admin_sessions_url)
@@ -174,7 +174,7 @@ describe PostsController do
     context 'when admin' do
       before(:each) do
         login
-        post :update, id: @post2.id, post: {title: "Such Post", post: "Really good."}
+        post :update, params: { id: @post2.id, post: {title: "Such Post", post: "Really good."} }
       end
 
       it 'sets a new title' do
@@ -198,7 +198,7 @@ describe PostsController do
   # I realize publish and unpublish should be posts not gets
   describe 'GET publish' do
     context 'when public' do
-      before(:each){ get :publish, id: @post2.id }
+      before(:each){ get :publish, params: { id: @post2.id } }
 
       it 'redirects to login url' do
         expect(response).to redirect_to(admin_sessions_url)
@@ -206,7 +206,7 @@ describe PostsController do
     end
 
     context 'when admin' do
-      before(:each){ login; get :publish, id: @post2.id }
+      before(:each){ login; get :publish, params: { id: @post2.id } }
 
       it 'redirects back to edit post url' do
         expect(response).to redirect_to(edit_post_path(@post2.id))
@@ -224,7 +224,7 @@ describe PostsController do
 
   describe 'GET unpublish' do
     context 'when public' do
-      before(:each){ get :unpublish, id: @post1.id }
+      before(:each){ get :unpublish, params: { id: @post1.id } }
 
       it 'redirects to login url' do
         expect(response).to redirect_to(admin_sessions_url)
@@ -232,7 +232,7 @@ describe PostsController do
     end
 
     context 'when admin' do
-      before(:each){ login; get :unpublish, id: @post1.id }
+      before(:each){ login; get :unpublish, params: { id: @post1.id } }
 
       it 'redirects back to edit post url' do
         expect(response).to redirect_to(edit_post_path(@post1.id))

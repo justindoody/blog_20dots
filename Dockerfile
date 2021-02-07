@@ -8,6 +8,7 @@ RUN apk add --update --no-cache \
         nodejs \
         sqlite-dev \
         tzdata \
+        imagemagick \
         mysql-dev \
         chromium-chromedriver \
         chromium && \
