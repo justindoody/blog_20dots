@@ -1,8 +1,8 @@
-require 'factory_girl_rails'
+require 'factory_bot_rails'
 require 'capybara/rspec'
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   Capybara.server = :webrick
 
   Capybara.register_driver :chrome_headless do |app|

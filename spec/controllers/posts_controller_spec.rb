@@ -43,7 +43,7 @@ describe PostsController do
 
   describe 'GET show' do
     before :each do
-      get :show, id: @post1.slug
+      get :show, params: { id: @post1.slug }
     end
 
     it 'has a 200 status code' do

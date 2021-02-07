@@ -28,7 +28,7 @@ describe SessionsController do
 
     context 'with wrong password' do
       it 'redirects back to login path' do
-        post :login, session: { password: "wrong" }
+        post :login, params: { session: { password: "wrong" } }
         expect(response).to redirect_to(admin_sessions_path)
       end
     end

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'dotenv-rails'
+gem 'dotenv-rails', '~> 2.7'
 gem 'rails', '~> 5.0.0'
 
 ### Assets
@@ -32,9 +32,10 @@ group :development do
 end
 
 group :development, :test do
+  gem 'pry-rails', '~> 0.3'
   gem 'sqlite3', '~> 1.3.13'
   gem 'rspec-rails', '~> 4.0'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'factory_bot_rails', '~> 5.0'
   gem 'rails_best_practices'
 end
 
@@ -43,7 +44,7 @@ group :test do
   gem 'capybara', '~> 3.2'
   gem 'capybara-screenshot'
   gem 'guard-rspec', '~> 4.7', require: false
-  gem 'database_cleaner'
+  gem 'database_cleaner', '~> 2.0'
   gem 'selenium-webdriver', '~> 3.142'
 end
 
