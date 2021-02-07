@@ -35,3 +35,10 @@
 *~
 .project
 .DS_Store
+
+# Ignore sensitive infrastructure items
+/ops/terraform/terraform.tfvars
+/ops/terraform/.terraform
+/ops/terraform/.terraform.lock.hcl
+/ops/terraform/terraform.tfstate
+/ops/terraform/terraform.tfstate.backup
