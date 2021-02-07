@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'dotenv-rails'
-gem 'rails', '~> 4.2.11'
+gem 'rails', '~> 5.0.0'
 
 ### Assets
-gem 'sass-rails', '~> 5.0.1'
+gem 'sass-rails', '~> 5.0.6'
+gem 'sprockets', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
@@ -20,7 +21,7 @@ gem 'friendly_id'
 gem 'bcrypt', '~> 3.1.7'
 gem 'builder' # RSS Feed
 gem 'carrierwave' # Image upload
-gem 'remotipart', '~> 1.2' # Allows asynch upload of files aka "multipart"
+gem 'remotipart', '~> 1.4' # Allows async upload of files aka "multipart"
 gem 'mini_magick' # Image manipulation interface with ImageMagick
 gem 'jbuilder', '~> 2.0'
 gem 'bigdecimal', '~> 1.4'
@@ -38,6 +39,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rails-controller-testing'
   gem 'capybara', '~> 3.2'
   gem 'capybara-screenshot'
   gem 'guard-rspec', '~> 4.7', require: false
@@ -46,6 +48,6 @@ group :test do
 end
 
 group :production do
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.4.10'
 end
 

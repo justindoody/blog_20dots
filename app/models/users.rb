@@ -1,4 +1,4 @@
-class Users < ActiveRecord::Base
+class Users < ApplicationRecord
   has_secure_password
 
   class << self
