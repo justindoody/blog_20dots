@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'dotenv-rails', '~> 2.7'
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
 
 ### Assets
 gem 'sass-rails', '~> 5.0.6'
@@ -10,9 +10,10 @@ gem 'uglifier', '~> 4.0'
 gem 'coffee-rails', '~> 4.1'
 gem 'jquery-rails', '~> 4.4'
 gem 'turbolinks', '~> 5.2.0'
-gem 'haml'
+gem 'haml', '~> 5.2'
 gem 'autoprefixer-rails'
 gem 'pure-css-rails'
+gem 'bootsnap', require: false
 
 ### General
 gem 'friendly_id'
@@ -31,7 +32,7 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3'
   gem 'sqlite3', '~> 1.4'
   gem 'rspec-rails', '~> 4.0'
-  gem 'factory_bot_rails', '~> 5.0'
+  gem 'factory_bot_rails', '~> 6.0'
   gem 'rails_best_practices'
 end
 
