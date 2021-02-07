@@ -16,7 +16,7 @@ gem 'autoprefixer-rails'
 gem 'pure-css-rails'
 
 ### General
-gem 'json', '~> 1.7'
+gem 'json', '~> 2.3'
 gem 'friendly_id'
 gem 'bcrypt', '~> 3.1.7'
 gem 'builder' # RSS Feed

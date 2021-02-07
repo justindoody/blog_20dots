@@ -127,7 +127,7 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
-    json (1.8.6)
+    json (2.3.0)
     launchy (2.5.0)
       addressable (~> 2.7)
     listen (3.4.1)
@@ -296,7 +296,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
-  json (~> 1.7)
+  json (~> 2.3)
   mini_magick
   mysql2 (~> 0.4.10)
   pry-rails (~> 0.3)
