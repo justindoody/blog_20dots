@@ -1,30 +1,26 @@
 source 'https://rubygems.org'
 
 gem 'dotenv-rails', '~> 2.7'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.1.0'
 
 ### Assets
 gem 'sass-rails', '~> 5.0.6'
 gem 'sprockets', '~> 3.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
-gem 'turbolinks'
-gem 'jquery-turbolinks'
+gem 'uglifier', '~> 4.0'
+gem 'coffee-rails', '~> 4.1'
+gem 'jquery-rails', '~> 4.4'
+gem 'turbolinks', '~> 5.2.0'
 gem 'haml'
 gem 'autoprefixer-rails'
 gem 'pure-css-rails'
 
 ### General
-gem 'json', '~> 1.7'
 gem 'friendly_id'
 gem 'bcrypt', '~> 3.1.7'
 gem 'builder' # RSS Feed
-gem 'carrierwave' # Image upload
+gem 'carrierwave', '~> 1.3' # Image upload
 gem 'remotipart', '~> 1.4' # Allows async upload of files aka "multipart"
 gem 'mini_magick' # Image manipulation interface with ImageMagick
-gem 'jbuilder', '~> 2.0'
-gem 'bigdecimal', '~> 1.4'
 
 group :development do
   gem 'spring'
@@ -33,7 +29,7 @@ end
 
 group :development, :test do
   gem 'pry-rails', '~> 0.3'
-  gem 'sqlite3', '~> 1.3.13'
+  gem 'sqlite3', '~> 1.4'
   gem 'rspec-rails', '~> 4.0'
   gem 'factory_bot_rails', '~> 5.0'
   gem 'rails_best_practices'

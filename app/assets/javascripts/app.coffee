@@ -8,10 +8,10 @@ page_load = ->
   window.Application.render()
 
 
-$(document).on 'page:change', ->
+$(document).on 'turbolinks:load', ->
   page_load()
 
-$(document).on 'page:before-change', ->
+$(document).on 'turbolinks:click', ->
   window.Application.cleanup()
   true
 

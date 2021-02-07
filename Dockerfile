@@ -1,6 +1,7 @@
-FROM ruby:2.5.8-alpine3.13
+FROM ruby:2.7.2-alpine3.13
 
 ARG APP_PATH=/code
+ENV CHROMEDRIVER_PATH=/usr/bin/chromedriver
 
 RUN apk add --update --no-cache \
         bash \
@@ -12,12 +13,12 @@ RUN apk add --update --no-cache \
         mysql-dev \
         chromium-chromedriver \
         chromium && \
-      gem install bundler -v 1.17.3 && \
+      gem install bundler -v 2.2.8 && \
       mkdir $APP_PATH
 
 COPY entrypoint.sh /usr/bin
-
 RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
 
 WORKDIR $APP_PATH
 
@@ -26,10 +27,6 @@ COPY Gemfile* $APP_PATH/
 RUN bundle install
 
 COPY . $APP_PATH/
-
-ENV CHROMEDRIVER_PATH=/usr/bin/chromedriver
-
-ENTRYPOINT ["entrypoint.sh"]
 
 EXPOSE 3001
 
