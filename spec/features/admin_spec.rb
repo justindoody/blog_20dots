@@ -23,6 +23,7 @@ describe 'admin processes', type: :feature, js: true do
 
       post_count = Post.count
       click_link 'new_post_button'
+      expect(page).to have_content 'A New Post'
       expect(Post.count).to eq post_count + 1
     end
   end
