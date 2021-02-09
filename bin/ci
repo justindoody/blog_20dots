@@ -1,0 +1,29 @@
+#!/bin/bash
+set -euo pipefail
+
+# Setup for CodeShip
+
+# Set node version
+source ~/.nvm/nvm.sh
+nvm use 14.3.0
+
+# Install gems
+bundle install
+
+# Make sure Ruby on Rails knows we are in the the test environment.
+
+export RAILS_ENV=test
+
+# We will precompile
+export LIVE_COMPILE_ASSETS="false"
+
+# Prepare the test database
+bundle exec rake db:schema:load
+
+# Remove system node
+## It was screwing up autoprefixer which uses execjs and does a version
+## check that checks `nodejs` before nvm managed `node`.
+sudo apt-get purge nodejs -y
+
+# Precompile assets
+bundle exec rake assets:precompile --trace
