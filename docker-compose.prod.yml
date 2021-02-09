@@ -17,7 +17,7 @@ services:
       RAILS_SERVE_STATIC_FILES: 'true'
       RAILS_LOG_TO_STDOUT: 'true'
     env_file:
-    - .env.prod
+      - .env.prod
     labels:
       - "traefik.http.routers.blog.rule=Host(`blog.20dots.com`)"
       # TODO: Move certResolver's name to ENV
