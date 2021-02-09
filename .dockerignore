@@ -1,0 +1,22 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Hide the sublime project file
+*.sublime-project
+*.sublime-workspace
+
+# Remove the cover image upload directory
+/public/uploads/
+
+# Ignore other things
+*swp
+*~
+.project
+.DS_Store
+
+# Ignore sensitive infrastructure items
+/ops/*

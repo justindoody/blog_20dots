@@ -21,7 +21,6 @@
 # Hide the production database details
 .env
 .env.*
-/config/database.yml
 
 # Hide the sublime project file
 *.sublime-project
@@ -42,3 +41,10 @@
 /ops/terraform/.terraform.lock.hcl
 /ops/terraform/terraform.tfstate
 /ops/terraform/terraform.tfstate.backup
+/ops/ansible/hosts
+/ops/ansible/vars/default.yml
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+/node_modules
