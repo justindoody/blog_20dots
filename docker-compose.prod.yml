@@ -21,9 +21,8 @@ services:
     labels:
       - "traefik.http.routers.blog.rule=Host(`blog.20dots.com`)"
       # TODO: Move certResolver's name to ENV
-      - "traefik.http.routers.whoami.tls.certResolver=dns-cloudflare"
+      - "traefik.http.routers.blog.tls.certResolver=dns-cloudflare"
       # Tell Traefik to use the port 3000 to connect to `web`
       - traefik.http.services.blog.loadbalancer.server.port=3000
     volumes:
-      blog-uploads:
-        - /mnt/apps_data/blog-uploads:/code/public/uploads
+      - "/mnt/apps_data/blog-uploads:/code/public/uploads"
