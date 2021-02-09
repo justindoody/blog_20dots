@@ -14,6 +14,7 @@ rm -rf ./ops
 # Write production environment variables
 ## This seems too hacky
 echo "DATABASE_URL=$PROD_DATABASE_URL" >> .env.prod
+echo "RAILS_MASTER_KEY=$RAILS_MASTER_KEY" >> .env.prod
 
 # use scp to push the project to docker server
 # create folder structure on remote host (prevent exceptions...)

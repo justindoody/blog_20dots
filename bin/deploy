@@ -10,7 +10,11 @@ cd $targetfolder
 export $(grep -v '^#' .env.prod | xargs)
 
 # Fire up new containers
-docker-compose --project-name blog --file docker-compose.prod.yml up --build --detach
+docker-compose --project-name blog \
+               --file docker-compose.prod.yml \
+               up \
+               --build \
+               --detach
 
 # Cleanup
 rm -rf targetfolder
