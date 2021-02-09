@@ -25,7 +25,20 @@ RUN bundle install --without development test
 
 COPY . $APP_PATH/
 
-RUN RAILS_ENV=production bundle exec rake assets:precompile
+ENV RAILS_ENV=production
+
+# Rails asset compilation requires booting the full app so
+# the production vars / master.key are required to be present.
+# This is extremely annoying and there is a longstanding open issue.
+
+# I realize passing this as an arg isn't secure but this image is
+# private and trying to use buildkit secrets with compose is currently
+# a nightmare.
+ARG RAILS_MASTER_KEY
+ENV DATABASE_URL=precompile
+
+RUN RAILS_MASTER_KEY=$RAILS_MASTER_KEY \
+    bundle exec rake assets:precompile
 
 EXPOSE 3000
 

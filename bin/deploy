@@ -6,9 +6,11 @@ echo Using Commit $1
 targetfolder=~/blog/builds/$1
 cd $targetfolder
 
+# Load the production vars into environment
+export $(grep -v '^#' .env.prod | xargs)
+
 # Fire up new containers
-sudo docker-compose -f docker-compose.prod.yml up --build --detach
+docker-compose --project-name blog --file docker-compose.prod.yml up --build --detach
 
 # Cleanup
-cd ~
 rm -rf targetfolder

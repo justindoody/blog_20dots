@@ -11,6 +11,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
+      args:
+        # Loaded from ENV
+        - RAILS_MASTER_KEY
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -p 3000 -b '0.0.0.0'"
     environment:
       RAILS_ENV: production
@@ -26,3 +29,4 @@ services:
       - traefik.http.services.blog.loadbalancer.server.port=3000
     volumes:
       - "/mnt/apps_data/blog-uploads:/code/public/uploads"
+    restart: unless-stopped
