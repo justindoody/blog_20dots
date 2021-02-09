@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'dotenv-rails', '~> 2.7'
 gem 'rails', '~> 5.2.0'
 gem 'puma', '~> 5.0'
+gem 'envied', '~> 0.9'
 
 ### Assets
 gem 'sass-rails', '~> 5.0.6'

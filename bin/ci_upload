@@ -1,0 +1,22 @@
+#!/bin/bash
+set -euo pipefail
+
+cd ~/clone/
+
+# Write production environment variables
+## This seems too hacky
+echo "DATABASE_URL=$PROD_DATABASE_URL" >> .env.prod
+
+targetfolder=~/blog/builds/$CI_COMMIT_ID/
+
+# use scp to push the project to docker server
+# create folder structure on remote host (prevent exceptions...)
+ssh $DEPLOY_USER@$DEPLOY_SERVER \
+  -p 22 \
+  "mkdir -p $targetfolder" && \
+  scp -rp -P 22 \
+    ~/clone/* \
+    $DEPLOY_USER@$DEPLOY_SERVER:$targetfolder
+
+# Run script to spin up the docker containers
+ssh $DEPLOY_USER@$DEPLOY_SERVER -p 22 "cd $targetfolder && ./bin/deploy $CI_COMMIT_ID"

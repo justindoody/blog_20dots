@@ -1,0 +1,14 @@
+#!/bin/bash
+set -euo pipefail
+
+echo Using Commit $1
+
+targetfolder=~/blog/builds/$1
+cd $targetfolder
+
+# Fire up new containers
+docker-compose -f docker-compose.prod.yml up --build --detach
+
+# Cleanup
+cd ~
+rm -rf targetfolder
