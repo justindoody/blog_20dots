@@ -20,8 +20,8 @@ echo "DATABASE_URL=$PROD_DATABASE_URL" >> .env.prod
 ssh $DEPLOY_USER@$DEPLOY_SERVER \
   -p 22 \
   "mkdir -p $targetfolder" && \
-  scp -rp -P 22 \
-    ~/clone/. \
+  rsync --recursive --times --compress --progress \
+    ~/clone/ \
     $DEPLOY_USER@$DEPLOY_SERVER:$targetfolder
 
 # Run script to spin up the docker containers
