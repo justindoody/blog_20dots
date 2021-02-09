@@ -7,7 +7,7 @@ cd ~/clone/
 ## This seems too hacky
 echo "DATABASE_URL=$PROD_DATABASE_URL" >> .env.prod
 
-targetfolder=~/blog/builds/$CI_COMMIT_ID/
+targetfolder=/home/$DEPLOY_USER/blog/builds/$CI_COMMIT_ID/
 
 # use scp to push the project to docker server
 # create folder structure on remote host (prevent exceptions...)
