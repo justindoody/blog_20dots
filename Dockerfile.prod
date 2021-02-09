@@ -1,19 +1,15 @@
 FROM ruby:2.7.2-alpine3.13
 
 ARG APP_PATH=/code
-ENV CHROMEDRIVER_PATH=/usr/bin/chromedriver
 
 RUN apk add --update --no-cache \
         bash \
-        nano \
         build-base \
         nodejs \
-        sqlite-dev \
+        yarn \
         tzdata \
         imagemagick \
-        postgresql-dev \
-        chromium-chromedriver \
-        chromium && \
+        postgresql-dev && \
       gem install bundler -v 2.2.8 && \
       mkdir $APP_PATH
 
@@ -25,9 +21,11 @@ WORKDIR $APP_PATH
 
 COPY Gemfile* $APP_PATH/
 
-RUN bundle install
+RUN bundle install --without development test
 
 COPY . $APP_PATH/
+
+RUN RAILS_ENV=production bundle exec rake assets:precompile
 
 EXPOSE 3000
 

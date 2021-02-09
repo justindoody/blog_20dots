@@ -1,9 +1,18 @@
 version: "3.9"
+
+networks:
+  default:
+    external:
+      name: digitalocean-apps_default
+
 services:
-  web:
+  blog:
+    container_name: blog
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/code
-    ports:
-      - "3001:3000"
+    labels:
+      - "traefik.http.routers.blog.rule=Host(`blog.localhost`)"
+      # Tell Traefik to use the port 3000 to connect to `web`
+      - traefik.http.services.blog.loadbalancer.server.port=3000
