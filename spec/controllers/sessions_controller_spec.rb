@@ -12,7 +12,7 @@ describe SessionsController do
   end
 
   describe 'POST login' do
-    let!(:user) { Users.create(password_digest: BCrypt::Password.create("password", cost: 4)) }
+    let!(:user) { User.create(password_digest: BCrypt::Password.create("password", cost: 4)) }
 
     context 'with correct password' do
       before { post :login, params: { session: { password: "password" } } }

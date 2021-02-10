@@ -1,30 +1,31 @@
 - provide(:title, "| #{@post.title}")
 
-#header_wrapper
-  = render 'show_cover'
-  #header_container_text
-    #post_height.post_title
-      .date
-        = @post.published_at.strftime('%B %d, %Y')
-      %h1#post_title
-        = @post.title
+.post
+  #header_wrapper
+    = render 'show_cover'
+    #header_container_text
+      #post_height.post_title
+        .date
+          = @post.published_at.strftime('%B %d, %Y')
+        %h1#post_title
+          = @post.title
 
-= render 'layouts/sidebar'
+  = render 'layouts/sidebar'
 
-#content
-  -# Display updated text if updated since published
-  -# Excludes edits on the day of publishing
-  - if @updated_since_published
-    #updated_post
-      Post Updated On
-      = @post.updated_at.strftime(' %B %d, %Y')
-  = @post.post.html_safe
+  #content
+    -# Display updated text if updated since published
+    -# Excludes edits on the day of publishing
+    - if @updated_since_published
+      #updated_post
+        Post Updated On
+        = @post.updated_at.strftime(' %B %d, %Y')
+    = @post.post.html_safe
 
-  = render 'subscribe'
-  = render 'layouts/disqus'
+    = render 'subscribe'
+    = render 'layouts/disqus'
 
-  %svg
-    %filter#blur_svg{ 'color-interpolation-filters' => 'sRGB' }
-      <feGaussianBlur stdDeviation="8"/>
-      %feComponentTransfer
-        <feFuncA type="discrete" tableValues="1 1"/>
+    %svg
+      %filter#blur_svg{ 'color-interpolation-filters' => 'sRGB' }
+        <feGaussianBlur stdDeviation="8"/>
+        %feComponentTransfer
+          <feFuncA type="discrete" tableValues="1 1"/>

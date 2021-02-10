@@ -10,11 +10,10 @@ class PostsController < ApplicationController
   def show
     @post = Post.friendly.find(params[:id])
     @updated_since_published = @post.updated_since_published?
-    @body_class = 'post'
   end
 
   def new
-    @post = Post.create_default
+    Post.create_default
     redirect_to root_url
   end
 
@@ -25,7 +24,6 @@ class PostsController < ApplicationController
 
   def edit
     @image = Image.new
-    @body_class = 'post'
   end
 
   def update

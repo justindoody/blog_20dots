@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def login
-    if Users.admin.authenticate(login_params[:password])
+    if User.admin.authenticate(login_params[:password])
       login_admin
       redirect_to admin_posts_path
 

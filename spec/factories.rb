@@ -11,7 +11,7 @@ FactoryBot.define do
     post { "Start typing..." }
   end
 
-  factory :admin, class: Users do
+  factory :admin, class: User do
     password_digest { BCrypt::Password.create("password", cost: 4) }
   end
 end

@@ -2,15 +2,17 @@
 - content_for :head do
   = stylesheet_link_tag 'admin/application', media: 'all', 'data-turbolinks-track' => true
 
-#login
-  #login_container
-    - flash.each do |message_type, message|
-      %div{ class: "alert alert-#{message_type}" }
-        = message
-    = form_for(:session, url: login_sessions_path, html: { class: 'pure-form' }) do |f|
+.all_posts
+  #login
+    #login_container
+      - flash.each do |message_type, message|
+        %div{ class: "alert alert-#{message_type}" }
+          = message
+      = form_for(:session, url: login_sessions_path, html: { class: 'pure-form' }) do |f|
 
-      = f.password_field :password, placeholder: 'Password'
+        = f.password_field :password, placeholder: 'Password'
 
-      = f.submit 'Log In', class: 'pure-button pure-button-primary'
+        = f.submit 'Log In', class: 'pure-button pure-button-primary'
 
-= render partial: 'posts/all_posts', locals: { admin: false }
+  = render 'layouts/sidebar'
+  = render partial: 'posts/all_posts', locals: { admin: false }

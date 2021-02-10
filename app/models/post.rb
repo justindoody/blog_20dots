@@ -8,8 +8,10 @@ class Post < ApplicationRecord
   # Using CarrierWave gem to handle image uploads for posts
   mount_uploader :cover_photo, CoverPhotoUploader
 
-  def self.create_default
-    Post.create(title: "A New Post", post: "Start typing...")
+  class << self
+    def create_default
+      create(title: "A New Post", post: "Start typing...")
+    end
   end
 
   # Check if updated since published, excluding updates on day of publishing
@@ -18,11 +20,11 @@ class Post < ApplicationRecord
   end
 
   def publish
-    update_attributes(draft: false, published_at: Time.now)
+    update(draft: false, published_at: Time.now)
   end
 
   def unpublish
-    update_attributes(draft: true)
+    update(draft: true)
   end
 
 end

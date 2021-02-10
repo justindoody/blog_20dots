@@ -1,1 +1,3 @@
-= render partial: 'all_posts', locals: { admin: false }
+.all_posts
+  = render 'layouts/sidebar'
+  = render partial: 'all_posts', locals: { admin: false }
