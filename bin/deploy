@@ -17,4 +17,6 @@ docker-compose --project-name blog \
                --detach
 
 # Cleanup
-rm -rf targetfolder
+# docker container prune --force
+# docker image prune --force
+rm -rf $targetfolder
