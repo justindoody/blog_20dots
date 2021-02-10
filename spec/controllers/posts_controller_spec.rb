@@ -72,7 +72,7 @@ describe PostsController do
       end
 
       it 'creates a new post' do
-        expect(assigns(:post)).not_to be_nil
+        expect(Post.count).to eq(3)
       end
     end
 
