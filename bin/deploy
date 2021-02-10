@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+# Responsible for building and spinning up docker containers
+
 echo Using Commit $1
 
 targetfolder=~/blog/builds/$1
@@ -18,5 +20,5 @@ docker-compose --project-name blog \
 
 # Cleanup
 # docker container prune --force
-# docker image prune --force
+docker image prune --force
 rm -rf $targetfolder

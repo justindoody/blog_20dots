@@ -1,0 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+
+# Default to on.
+if [ "${RELEASE_PHASE:-on}" == "on" ]; then
+  bundle exec rails db:migrate
+fi

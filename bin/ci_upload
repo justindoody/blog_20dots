@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+# Responsible for copying build over to production server and
+# running deploy scripts.
+# Note: Dependent on CodeShip specific env vars
+
 cd ~/clone/
 
 targetfolder=/home/$DEPLOY_USER/blog/builds/$CI_COMMIT_ID/
@@ -27,3 +31,6 @@ ssh $DEPLOY_USER@$DEPLOY_SERVER \
 
 # Run script to spin up the docker containers
 ssh $DEPLOY_USER@$DEPLOY_SERVER -p 22 "cd $targetfolder && ./bin/deploy $CI_COMMIT_ID"
+
+# Run release script
+ssh $DEPLOY_USER@$DEPLOY_SERVER -p 22 "docker exec blog ./bin/release"
