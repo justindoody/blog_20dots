@@ -6,6 +6,7 @@ gem 'puma', '~> 5.0'
 gem 'envied', '~> 0.9'
 
 ### Assets
+gem 'webpacker'
 gem 'sass-rails', '~> 5.0.6'
 gem 'sprockets', '~> 3.0'
 gem 'uglifier', '~> 4.0'

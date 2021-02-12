@@ -8,6 +8,7 @@ RUN apk add --update --no-cache \
         nano \
         build-base \
         nodejs \
+        yarn \
         sqlite-dev \
         tzdata \
         imagemagick \
