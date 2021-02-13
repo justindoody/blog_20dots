@@ -1,23 +1,19 @@
-#all_posts
-  %ul.flip
+.flex-grow
+  %ul
     - @posts.each do |post|
-      %li
+      %li.h-72.bg-cover.bg-center.flex.flex-wrap.content-center
         - path = admin ? edit_post_path(post.id) : post
-        = link_to path, class: 'post_container cover_photo' do
+        = link_to path, class: 'px-20 flex-grow h-full relative flex items-center overflow-hidden' do
           - if post.cover_photo.url.present?
-            %img.bg.blurry{ src: "#{ post.cover_photo.url}", style: "filter: url('#blur_svg')", alt: 'cover image blurred' }
-            %img.bg.crisp{ src: "#{post.cover_photo.url}", alt: 'cover image' }
+            .absolute.blur.-inset-3.bg-cover{ style: "background-image: url(#{post.cover_photo.url})"}
+            .absolute.-inset-3.bg-cover.hover:opacity-0.transition-opacity.duration-300{ style: "background-image: url(#{post.cover_photo.url})"}
 
           - if post.draft && admin
             .draft
               Draft
-          .post_title
-            .date
-              = post.created_at.strftime('%B %d, %Y')
-            = post.title.strip
 
-%svg
-  %filter#blur_svg{ 'color-interpolation-filters' => 'sRGB' }
-    <feGaussianBlur stdDeviation="8"/>
-    %feComponentTransfer
-      <feFuncA type="discrete" tableValues="1 1"/>
+          %div
+            .text-white.font-sidebar.text-2xl.font-thin.text-shadow.relative.pointer-events-none
+              = post.created_at.strftime('%B %d, %Y')
+            .text-white.font-sidebar.text-7xl.font-bold.text-shadow.relative.pointer-events-none
+              = post.title.strip

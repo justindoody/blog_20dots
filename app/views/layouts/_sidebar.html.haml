@@ -1,18 +1,21 @@
-#sidebar
+%div.p-9.md:max-w-xs
   = link_to '', feed_path, id: 'rss_icon', onclick: "ga('send', 'event', 'button', 'click', 'rss', 1);"
-  #pic_hello
-    = image_tag('face_circle.jpg', id: 'face_circle')
 
-    #about Hi, I'm Justin.
+  .flex.flex-row.flex-wrap.gap-x-6.gap-y-8
+    .flex-initial.max-width-xs.w-36.md:w-44
+      = image_tag('face_circle.jpg', id: 'face_circle')
+
+    .self-center.font-sidebar.text-7xl.font-semibold.text-gray-800.md:text-4xl Hi, I'm Justin.
 
 
-  #about_para
-    I type here. Check out my <a href="http://tvtoday.20dots.com/" class="link">latest app</a>. I'm a full stack <a href="http://rubyonrails.org/" class="link">RoR</a> web developer with a bit of <a href="https://www.apple.com/swift/" class="link">Swift</a> experience. Sometimes I <a href="https://soundcloud.com/arsvita" class="link">make/mix music</a>.
+  .text-lg.text-gray-500.my-5.font-light
+    I type here. Check out my <a href="http://tvtoday.20dots.com/" class="link-blue">latest app</a>. I'm a full stack <a href="http://rubyonrails.org/" class="link-blue">RoR</a> web developer with a bit of <a href="https://www.apple.com/swift/" class="link-blue">Swift</a> experience. Sometimes I <a href="https://soundcloud.com/arsvita" class="link-blue">make/mix music</a>.
 
-  .button_container
-    = link_to ("<i class='fa fa-book'></i> all posts").html_safe, posts_path, class: 'sidebar_button'
+  %ul.flex.flex-row.gap-x-6.md:flex-col.md:gap-y-8.md:pt-4
+    %li
+      = link_to ("<i class='fa fa-book'></i> all posts").html_safe, posts_path, class: 'button-blue'
 
-  .button_container
-    %a.sidebar_button{ id: 'contact_button', href: '', onclick: "ga('send', 'event', 'button', 'click', 'contact', 1);" }
-      %i.fa.fa-envelope
-      contact
+    %li
+      %a.button-blue{ id: 'contact_button', href: '', onclick: "ga('send', 'event', 'button', 'click', 'contact', 1);" }
+        %i.fa.fa-envelope
+        contact

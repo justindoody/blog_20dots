@@ -13,8 +13,12 @@ services:
     environment:
       # Make it easy to use `rails credentials:edit`
       EDITOR: nano
+      WEBPACKER_DEV_SERVER_HOST: '0.0.0.0'
     volumes:
       - .:/code
+    ports:
+      # For webpack-dev-server
+      - "3035:3035"
     labels:
       - "traefik.http.routers.blog.rule=Host(`blog.localhost`)"
       # Tell Traefik to use the port 3000 to connect to `web`

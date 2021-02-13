@@ -1,3 +1,24 @@
-.test {
-    color: black;
+.link-blue {
+    @apply underline;
+    color: #67b8ff;
+}
+
+.link-blue:hover {
+  color: #3c85c5
+}
+
+.button-blue {
+    @apply  border-solid border-4 px-4 py-1.5 rounded-3xl font-sidebar font-semibold border-gray-100 hover:border-blue-300 hover:text-blue-500 text-gray-500 transition duration-500 ease-in-out;
+}
+
+.text-shadow {
+    text-shadow: 0 0 5px rgb(66, 66, 66);
+}
+
+.blur {
+    filter: blur(12px);
+}
+
+.h-halfscreen {
+    height: 50vh;
 }
