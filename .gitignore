@@ -48,3 +48,4 @@
 /config/master.key
 
 /node_modules
+/public/packs
