@@ -8,16 +8,12 @@ echo Using Commit $1
 targetfolder=~/blog/builds/$1
 cd $targetfolder
 
-# Load the production vars into environment
-# Temporary
-export $(grep -v '^#' .env.prod | xargs)
-
 # Build new image
 # TODO: Move build to CI and reference from registry
 DOCKER_BUILDKIT=1 \
 docker build \
        --tag com.20dots.blog:latest \
-       --secret id=RAILS_MASTER_KEY,src=${RAILS_MASTER_KEY:?RAILS_MASTER_KEY missing} \
+       --secret id=RAILS_MASTER_KEY,src=./RAILS_MASTER_KEY \
        .
 
 # Release phase
