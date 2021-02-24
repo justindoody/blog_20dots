@@ -36,6 +36,7 @@ services:
         max_attempts: 3
         window: 60s
       labels:
+        - traefik.enable=true
         - "traefik.constraint-label=traefik-public"
         - "traefik.http.routers.blog.rule=Host(`blog.20dots.com`)"
         # TODO: Move certResolver's name to ENV
