@@ -3,4 +3,5 @@ enable_defaults! { ENV['RACK_ENV'] != 'production' }
 
 group :production do
   variable :DATABASE_URL
+  variable :RAILS_MASTER_KEY
 end

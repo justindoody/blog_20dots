@@ -25,7 +25,7 @@ WORKDIR $APP_PATH
 
 COPY Gemfile* $APP_PATH/
 
-RUN bundle install
+RUN bundle install --jobs 4
 
 COPY . $APP_PATH/
 

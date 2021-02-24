@@ -1,3 +1,5 @@
+# syntax = docker/dockerfile:1.0-experimental
+
 FROM ruby:2.7.2-alpine3.13
 
 ARG APP_PATH=/code
@@ -21,7 +23,9 @@ WORKDIR $APP_PATH
 
 COPY Gemfile* $APP_PATH/
 
-RUN bundle install --without development test
+RUN bundle install \
+    --jobs 4 \
+    --without development test
 
 COPY . $APP_PATH/
 
@@ -31,13 +35,9 @@ ENV RAILS_ENV=production
 # the production vars / master.key are required to be present.
 # This is extremely annoying and there is a longstanding open issue.
 
-# I realize passing this as an arg isn't secure but this image is
-# private and trying to use buildkit secrets with compose is currently
-# a nightmare.
-ARG RAILS_MASTER_KEY
 ENV DATABASE_URL=precompile
 
-RUN RAILS_MASTER_KEY=$RAILS_MASTER_KEY \
+RUN --mount=type=secret,id=RAILS_MASTER_KEY,dst=./config/master.key \
     bundle exec rake assets:precompile
 
 EXPOSE 3000

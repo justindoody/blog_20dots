@@ -15,12 +15,10 @@ rm -rf ./tmp/cache
 rm -rf ./spec
 rm -rf ./ops
 
-# Write production environment variables
-## This seems too hacky
-echo "DATABASE_URL=$PROD_DATABASE_URL" >> .env.prod
+# Temporary
 echo "RAILS_MASTER_KEY=$RAILS_MASTER_KEY" >> .env.prod
 
-# use scp to push the project to docker server
+# use rsync to push the project to docker server
 # create folder structure on remote host (prevent exceptions...)
 ssh $DEPLOY_USER@$DEPLOY_SERVER \
   -p 22 \
@@ -31,6 +29,3 @@ ssh $DEPLOY_USER@$DEPLOY_SERVER \
 
 # Run script to spin up the docker containers
 ssh $DEPLOY_USER@$DEPLOY_SERVER -p 22 "cd $targetfolder && ./bin/deploy $CI_COMMIT_ID"
-
-# Run release script
-ssh $DEPLOY_USER@$DEPLOY_SERVER -p 22 "docker exec blog ./bin/release"

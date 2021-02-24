@@ -9,14 +9,34 @@ targetfolder=~/blog/builds/$1
 cd $targetfolder
 
 # Load the production vars into environment
-export $(grep -v '^#' .env.prod | xargs)
+# Temporary
+-export $(grep -v '^#' .env.prod | xargs)
 
-# Fire up new containers
-docker-compose --project-name blog \
-               --file docker-compose.prod.yml \
-               up \
-               --build \
-               --detach
+# Build new image
+# TODO: Move build to CI and reference from registry
+DOCKER_BUILDKIT=1 \
+docker build \
+       --tag com.20dots.blog:latest \
+       --secret id=RAILS_MASTER_KEY,src=${RAILS_MASTER_KEY:?RAILS_MASTER_KEY missing}
+       .
+
+# Release phase
+docker service create \
+       --name blog_release_phase \
+       --mode replicated-job  \
+       --secret RAILS_MASTER_KEY \
+       --secret DATABASE_URL \
+       --env RAILS_MASTER_KEY_FILE=/run/secrets/RAILS_MASTER_KEY \
+       --env DATABASE_URL_FILE=/run/secrets/DATABASE_URL \
+       com.20dots.blog:latest \
+       ./bin/release
+
+# TODO: Stop if release fails
+
+# Fire up the services
+docker stack deploy \
+       -c docker-stack.prod.yml \
+       blog
 
 # Cleanup
 # docker container prune --force
