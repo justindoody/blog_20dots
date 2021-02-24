@@ -22,6 +22,7 @@ services:
     env_file:
       - .env.prod
     labels:
+      - traefik.constraint-label=traefik-public
       - "traefik.http.routers.blog.rule=Host(`blog.20dots.com`)"
       # TODO: Move certResolver's name to ENV
       - "traefik.http.routers.blog.tls.certResolver=dns-cloudflare"
