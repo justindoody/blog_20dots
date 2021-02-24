@@ -16,16 +16,25 @@ docker build \
        --secret id=RAILS_MASTER_KEY,src=./RAILS_MASTER_KEY \
        .
 
-# Release phase
-docker service create \
-       --name blog_release_phase \
-       --mode replicated-job  \
-       --secret RAILS_MASTER_KEY \
-       --secret DATABASE_URL \
-       --env RAILS_MASTER_KEY_FILE=/run/secrets/RAILS_MASTER_KEY \
-       --env DATABASE_URL_FILE=/run/secrets/DATABASE_URL \
-       com.20dots.blog:latest \
-       ./bin/release
+release_phase_container_id=$(docker service ls --filter name=blog_release_phase -q)
+
+# Check if release phase service already exists
+if [ -z "$release_phase_container_id" ]; then
+  # Create release phase service
+  # NOTE: If modifying will need to remove the existing
+  # service
+  docker service create \
+         --name blog_release_phase \
+         --mode replicated-job  \
+         --secret RAILS_MASTER_KEY \
+         --secret DATABASE_URL \
+         --env RAILS_MASTER_KEY_FILE=/run/secrets/RAILS_MASTER_KEY \
+         --env DATABASE_URL_FILE=/run/secrets/DATABASE_URL \
+         com.20dots.blog:latest \
+         ./bin/release
+else
+  docker service update blog_release_phase --force
+fi
 
 # TODO: Stop if release fails
 
