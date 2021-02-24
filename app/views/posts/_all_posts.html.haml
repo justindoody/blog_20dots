@@ -1,7 +1,7 @@
 .flex-grow
   %ul
     - @posts.each do |post|
-      %li.h-72.bg-cover.bg-center.flex.flex-wrap.content-center
+      %li.h-72.bg-cover.bg-center.flex.flex-wrap.content-center.bg-gradient-to-r.from-green-400.to-blue-700
         - path = admin ? edit_post_path(post.id) : post
         = link_to path, class: 'px-20 flex-grow h-full relative flex items-center overflow-hidden' do
           - if post.cover_photo.url.present?
@@ -9,7 +9,7 @@
             .absolute.-inset-3.bg-cover.hover:opacity-0.transition-opacity.duration-300{ style: "background-image: url(#{post.cover_photo.url})"}
 
           - if post.draft && admin
-            .draft
+            .absolute.left-7.bottom-5.italic.text-white.opacity-50.font-extralight.text-2xl
               Draft
 
           %div

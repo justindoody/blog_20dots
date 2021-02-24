@@ -1,0 +1,22 @@
+.md:flex.flex-none.sidebar-width{ 'data-controller' => 'sticky-sidebar', 'data-action' => 'scroll@window->sticky-sidebar#onScroll' }
+  %div.p-9
+    = link_to '', feed_path, id: 'rss_icon', onclick: "ga('send', 'event', 'button', 'click', 'rss', 1);"
+
+    .flex.flex-row.flex-wrap.gap-x-6.gap-y-8.hidden.md:block
+      .flex-initial.max-width-xs.w-36.md:w-44
+        = image_tag('face_circle.jpg', id: 'face_circle')
+
+      .self-center.font-sidebar.pt-8.text-7xl.font-semibold.text-gray-800.md:text-4xl Hi, I'm Justin.
+
+
+    .text-lg.text-gray-500.my-5.font-light.hidden.md:block
+      I type here. Check out my <a href="http://tvtoday.20dots.com/" class="link-blue">latest app</a>. I'm a full stack <a href="http://rubyonrails.org/" class="link-blue">RoR</a> web developer with a bit of <a href="https://www.apple.com/swift/" class="link-blue">Swift</a> experience. Sometimes I <a href="https://soundcloud.com/arsvita" class="link-blue">make/mix music</a>.
+
+    %ul.flex.flex-row.gap-x-6.md:flex-col.md:gap-y-8.md:pt-4
+      %li
+        = link_to ("<i class='fa fa-book'></i> all posts").html_safe, posts_path, class: 'button-blue'
+
+      %li{ 'data-controller' => 'contact' }
+        %a.button-blue{ 'data-action' => 'click->contact#showModal', href: '', onclick: "ga('send', 'event', 'button', 'click', 'contact', 1);" }
+          %i.fa.fa-envelope
+          contact

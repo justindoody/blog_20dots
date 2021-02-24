@@ -2,4 +2,48 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+$sidebar-width: 350px;
+$medium-blue: #4197e2;
+$font-headers: "Helvetica Neue", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+
+@layer utilities {
+    @variants responsive {
+        .sidebar-width {
+            width: $sidebar-width;
+        }
+
+        .pl-sidebar {
+            margin-left: $sidebar-width;
+        }
+    }
+}
+
+.post-body {
+    p {
+        @apply py-5;
+    }
+
+    h1 {
+        @apply text-5xl;
+    }
+
+    h3, h4 {
+        font-family: $font-headers;
+        @apply pb-3 text-4xl;
+    }
+
+    h3 {
+        @apply text-gray-800 font-bold;
+    }
+
+    h4 {
+        @apply text-gray-600 font-light;
+    }
+
+    blockquote {
+        border-left: 5px solid $medium-blue;
+        @apply italic pl-5 my-5;
+    }
+}
+
 @import "../stylesheets/test";

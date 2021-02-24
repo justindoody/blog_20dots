@@ -1,27 +1,28 @@
 - provide(:title, "| #{@post.title}")
 
-.relative.h-halfscreen.overflow-hidden.flex.flex-wrap.content-center
+.relative.h-halfscreen.overflow-hidden.flex.flex-wrap.items-end{ 'data-controller' => 'parallax-header', 'data-action' => 'scroll@window->parallax-header#adjustOpacity scroll@window->parallax-header#adjustTitleHeight'}
   = render 'show_cover'
-  .relative.px-9.md:pl-80
-    .date.text-white.font-thin.text-2xl.text-shadow
-      = @post.published_at.strftime('%B %d, %Y')
-    %h1.text-white.font-sidebar.text-7xl.font-semibold.text-shadow.pt-2
-      = @post.title
+  #test.h-full.flex.flex-wrap.content-center{ 'data-parallax-header-target' => 'titleWrapper' }
+    .relative.px-9.py-3.md:pl-sidebar.md:px-0{ 'data-parallax-header-target' => 'title' }
+      .date.text-white.font-thin.text-2xl.text-shadow
+        = @post.published_at.strftime('%B %d, %Y')
+      %h1.text-white.font-sidebar.text-7xl.font-semibold.text-shadow.pt-2
+        = @post.title
 
 .flex.flex-col.md:flex-row
-  .hidden.md:flex
-    = render 'layouts/sidebar'
+  = render 'layouts/posts_sidebar'
 
   .flex-grow.pt-9.px-9.md:px-0
-    -# Display updated text if updated since published
-    -# Excludes edits on the day of publishing
-    - if @updated_since_published
-      #updated_post
-        Post Updated On
-        = @post.updated_at.strftime(' %B %d, %Y')
+    .post-body
+      -# Display updated text if updated since published
+      -# Excludes edits on the day of publishing
+      - if @updated_since_published
+        .font-serif.text-xl.text-gray-400.italic.pb-9
+          Post Updated On
+          = @post.updated_at.strftime(' %B %d, %Y')
 
-    .font-serif.text-xl.text-gray-900
-      = @post.post.html_safe
+      .font-serif.text-xl.text-gray-900.leading-loose.md:pr-9
+        = @post.post.html_safe
 
     = render 'subscribe'
     = render 'layouts/disqus'

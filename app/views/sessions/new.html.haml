@@ -1,18 +1,16 @@
 - provide(:title, '| Log In')
-- content_for :head do
-  = stylesheet_link_tag 'admin/application', media: 'all', 'data-turbolinks-track' => true
 
-.all_posts
-  #login
-    #login_container
-      - flash.each do |message_type, message|
-        %div{ class: "alert alert-#{message_type}" }
-          = message
-      = form_for(:session, url: login_sessions_path, html: { class: 'pure-form' }) do |f|
+.fixed.bg-black.opacity-80.flex.flex-row.justify-center.-inset-x-0.z-10.p-5
+  - flash.each do |message_type, message|
+    %div{ class: "alert alert-#{message_type}" }
+      = message
 
-        = f.password_field :password, placeholder: 'Password'
+  = form_for(:session, url: login_sessions_path) do |f|
 
-        = f.submit 'Log In', class: 'pure-button pure-button-primary'
+    = f.password_field :password, placeholder: 'Password', class: 'p-3 mr-3 focus:outline-none'
 
+    = f.submit 'Log In', class: 'p-3 rounded-lg bg-blue-500 text-white hover:bg-blue-600'
+
+.flex.flex-col.md:flex-row
   = render 'layouts/sidebar'
   = render partial: 'posts/all_posts', locals: { admin: false }

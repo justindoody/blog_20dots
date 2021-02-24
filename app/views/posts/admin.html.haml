@@ -1,16 +1,12 @@
-- content_for :head do
-  = stylesheet_link_tag 'admin/application', media: 'all', 'data-turbolinks-track' => true
-
-.all_posts
+.flex.flex-col.md:flex-row
   = render 'layouts/sidebar'
   = render partial: 'all_posts', locals: { admin: true }
 
-  #admin_fixed
+  .fixed.right-0.bg-black.flex.flex-row.justify-between{ style: 'left: 350px; background: rgba(60, 60, 60, .2)' }
+    = link_to new_post_path, class: 'bg-black opacity-60 text-gray-400 font-light py-3 px-5 hover:opacity-80' do
+      %i.fa.fa-pencil.fa-fw
+      new post
 
-  = link_to new_post_path, id: 'new_post_button' do
-    %i.fa.fa-pencil.fa-fw
-    new post
-
-  = link_to logout_sessions_path, id: 'logout_button' do
-    %i.fa.fa-sign-out.fa-fw
-    logout
+    = link_to logout_sessions_path, class: 'py-3 bg-gray-50 px-5 font-light opacity-30 hover:opacity-50' do
+      %i.fa.fa-sign-out.fa-fw
+      logout

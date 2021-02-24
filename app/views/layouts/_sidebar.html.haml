@@ -1,4 +1,4 @@
-%div.p-9.md:max-w-xs
+%div.p-9.md:sidebar-width
   = link_to '', feed_path, id: 'rss_icon', onclick: "ga('send', 'event', 'button', 'click', 'rss', 1);"
 
   .flex.flex-row.flex-wrap.gap-x-6.gap-y-8
@@ -15,7 +15,7 @@
     %li
       = link_to ("<i class='fa fa-book'></i> all posts").html_safe, posts_path, class: 'button-blue'
 
-    %li
-      %a.button-blue{ id: 'contact_button', href: '', onclick: "ga('send', 'event', 'button', 'click', 'contact', 1);" }
+    %li{ 'data-controller' => 'contact' }
+      %a.button-blue{ 'data-action' => 'click->contact#showModal', href: '', onclick: "ga('send', 'event', 'button', 'click', 'contact', 1);" }
         %i.fa.fa-envelope
         contact

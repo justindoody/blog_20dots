@@ -8,7 +8,7 @@
 }
 
 .button-blue {
-    @apply  border-solid border-4 px-4 py-1.5 rounded-3xl font-sidebar font-semibold border-gray-100 hover:border-blue-300 hover:text-blue-500 text-gray-500 transition duration-500 ease-in-out;
+    @apply  bg-white border-solid border-4 px-4 py-1.5 rounded-3xl font-sidebar font-semibold border-gray-100 hover:border-blue-300 hover:text-blue-500 text-gray-500 transition duration-500 ease-in-out;
 }
 
 .text-shadow {
@@ -21,4 +21,12 @@
 
 .h-halfscreen {
     height: 50vh;
+}
+
+.modal-background {
+    background-color: rgba(0,0,0,.4);
+}
+.modal-width {
+    width: calc(100%-40px);
+    max-width: 440px;
 }

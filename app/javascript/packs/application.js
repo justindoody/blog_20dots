@@ -10,4 +10,7 @@
 require("rails-ujs").start()
 require("turbolinks").start()
 
-console.log('Hello World from Webpacker.')
+import 'trix/dist/trix.css';
+import 'trix/dist/trix.js';
+
+import "controllers"

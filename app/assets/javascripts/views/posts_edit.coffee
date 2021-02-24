@@ -2,7 +2,6 @@ window.Views.PostsEdit ?= {}
 class Views.PostsEdit extends Views.Application
   render: ->
     super()
-    ViewConcern.Parallax.enable()
 
     editor = new MediumEditor('#post', buttons: [
       'bold'
@@ -56,15 +55,6 @@ class Views.PostsEdit extends Views.Application
       submit_post()
     ), 750)
 
-    $('#post').keyup debounce((->
-      strip_content()
-      submit_post()
-    ), 750)
-
-    $('#cover-icon-container > input').change ->
-      $('.cover_form').submit()
-
-
     ## Inline Images Editor ##
     $('.image-edit-container').toggle()
 
@@ -111,4 +101,3 @@ class Views.PostsEdit extends Views.Application
 
   cleanup: ->
     super()
-    ViewConcern.Parallax.cleanup()

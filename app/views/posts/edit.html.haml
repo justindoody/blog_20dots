@@ -1,65 +1,64 @@
 - provide(:title, "| #{@post.title}")
 - content_for :head do
-  = stylesheet_link_tag 'admin/application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'admin/application', defer: true
 
-.post
-  #header_wrapper
-    = render 'show_cover'
+.relative.h-halfscreen.overflow-hidden.flex.flex-wrap.items-end.bg-gradient-to-r.from-green-400.to-blue-700{ 'data-controller' => 'parallax-header', 'data-action' => 'scroll@window->parallax-header#adjustOpacity scroll@window->parallax-header#adjustTitleHeight'}
+  = render 'show_cover'
+  #test.h-full.flex.flex-wrap.content-center{ 'data-parallax-header-target' => 'titleWrapper' }
+    .relative.px-9.py-3.md:pl-sidebar.md:px-0{ 'data-parallax-header-target' => 'title' }
+      .date.text-white.font-thin.text-2xl.text-shadow
+        = @post.published_at&.strftime('%B %d, %Y')
+      %h1.text-white.font-sidebar.text-7xl.font-semibold.text-shadow.pt-2{ contenteditable: 'true' }
+        = @post.title
 
-    #header_container_text
-      #post_height.post_title
-        .date
-          = @post.created_at.strftime('%B %d, %Y')
-        #post_title_t{ contenteditable: 'true' }
-          = @post.title
-      #cover_edit
-        = form_for(@post, url: post_path(@post.id), html: { multipart: true, class: "edit_post cover_form" }) do |f|
-          #cover-icon-container
-            = f.file_field :cover_photo, accept: 'image/jpeg,image/gif,image/png'
-            %i.fa.fa-camera.cover-icon
-          = f.submit 'Upload Cover', class: 'cover-form-button'
+  .absolute.left-3.bottom-3{ 'data-controller' => 'cover-photo-upload' }
+    = form_for(@post, url: post_path(@post.id), html: { multipart: true, class: "cover_form", 'data-cover-photo-upload-target' => 'form' }) do |f|
+
+      %label{ for: 'cover-photo-input' }
+        %i.fa.fa-camera.text-white.text-4xl.opacity-50.hover:opacity-70
+      = f.file_field :cover_photo, accept: 'image/jpeg,image/gif,image/png', id: 'cover-photo-input', class: 'hidden', 'data-action' => 'change->cover-photo-upload#upload'
+
+      = f.submit 'Upload Cover', class: 'hidden'
 
 
-  = render 'layouts/sidebar'
+.flex.flex-col.md:flex-row
+  = render 'layouts/posts_sidebar'
 
-  #content
-    #post_actions
-      - if @post.draft
-        = link_to ("<i class='fa fa-toggle-off fa-fw'></i> Publish").html_safe, publish_post_path(@post.id), class: 'pure-button button-success'
-      - else
-        = link_to ("<i class='fa fa-toggle-on fa-fw'></i> Unpublish").html_safe, unpublish_post_path(@post.id), class: 'pure-button button-warning'
-      = link_to ("<i class='fa fa-trash fa-fw'></i> Delete").html_safe, post_path(@post.id), method: "delete", class: 'pure-button button-error'
+  .flex-grow.pt-9.px-9.md:px-0
+    .post-body
+      .mb-5
+        - if @post.draft
+          = link_to ("<i class='fa fa-toggle-off fa-fw'></i> Publish").html_safe, publish_post_path(@post.id), class: 'text-white py-2 px-5 mr-1 bg-green-500 hover:bg-green-600 rounded-lg font-light'
 
-    #post{ contenteditable: 'true' }
-      = @post.post.html_safe
+        - else
+          = link_to ("<i class='fa fa-toggle-on fa-fw'></i> Unpublish").html_safe, unpublish_post_path(@post.id), class: 'text-white py-2 px-3 mr-1 bg-yellow-500 hover:bg-yellow-400 rounded-lg'
 
-    #hidden_submit{ style: 'display:none' }
-      = form_for(@post, url: post_path(@post.id), remote: true) do |f|
-        = f.text_field :post
-        = f.text_field :title
-        = f.submit 'submit', id: 'hidden_button'
+        = link_to ("<i class='fa fa-trash fa-fw'></i> Delete").html_safe, post_path(@post.id), method: "delete", class: 'text-white py-2 px-5 mr-1 bg-red-500 hover:bg-red-600 rounded-lg'
 
-    = render 'layouts/disqus'
+    .font-serif.text-xl.text-gray-900.leading-loose.md:pr-9{ data: { controller: 'post' } }
+      = form_for(@post, url: post_path(@post.id), remote: true, authenticity_token: true, html: { 'data-post-target' => 'form' }) do |f|
+        = f.text_field :post, { id: 'post-data', value: @post.post.html_safe, type: 'hidden', 'data-post-target' => 'content' }
+        = f.text_field :title, { type: 'hidden' }
 
-  #insert-plugin
-    %i.fa.fa-plus-circle.fa-fw.insert-click
-    = form_for(@image, url: post_images_path(@post.id), remote: true, html: { multipart: true, class: "edit_post post_image_form" }) do |f|
-      = f.file_field :name, accept: 'image/jpeg,image/gif,image/png'
-      %i.fa.fa-camera.fa-fw.hide.insert-option#insert-image
-      = f.submit 'Add Image', id: 'insert-plugin-image-button'
+        %trix-editor{ input: 'post-data', 'data-controller' => 'post-attachment', 'data-action' => 'trix-attachment-add@document->post-attachment#upload input->post#saveMe', 'data-post-attachment-url-value' => post_images_path(@post.id) }
 
-    %i.fa.fa-link.fa-fw.hide.insert-option#insert-link
+  -# #insert-plugin
+  -#   %i.fa.fa-plus-circle.fa-fw.insert-click
+  -#   = form_for(@image, url: post_images_path(@post.id), remote: true, html: { multipart: true, class: "edit_post post_image_form" }) do |f|
+  -#     = f.file_field :name, accept: 'image/jpeg,image/gif,image/png'
+  -#     %i.fa.fa-camera.fa-fw.hide.insert-option#insert-image
+  -#     = f.submit 'Add Image', id: 'insert-plugin-image-button'
 
-  .image-edit-container
-    %i.fa.fa-align-left.fa-fw.image-edit
-    %i.fa.fa-align-center.fa-fw.image-edit
-    %i.fa.fa-align-right.fa-fw.image-edit
-    %i.fa.fa-expand.fa-fw.image-edit
-    %i.fa.fa-trash.fa-fw.image-edit
+  -#   %i.fa.fa-link.fa-fw.hide.insert-option#insert-link
 
-  #save
-    Saved
+  -# .image-edit-container
+  -#   %i.fa.fa-align-left.fa-fw.image-edit
+  -#   %i.fa.fa-align-center.fa-fw.image-edit
+  -#   %i.fa.fa-align-right.fa-fw.image-edit
+  -#   %i.fa.fa-expand.fa-fw.image-edit
+  -#   %i.fa.fa-trash.fa-fw.image-edit
 
-  #admin_fixed
-    = link_to ("<i class='fa fa-sign-out fa-fw'></i> logout").html_safe, logout_sessions_path, id: 'logout_button'
+#save
+  Saved
+
+= link_to ("<i class='fa fa-sign-out fa-fw'></i> logout").html_safe, logout_sessions_path, id: 'logout_button', class: 'fixed right-0 top-0 py-3 px-5 bg-white text-black font-light opacity-30 hover:opacity-50'

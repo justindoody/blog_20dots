@@ -1,47 +1,4 @@
 .post
-  min-height: 100%
-  height: 100%
-  margin: 0px
-
-  .bg
-    position: absolute
-    left: -20px
-    top: -20px
-    clip: rect(20px, auto, auto, 20px)
-
-  #blurry
-    -webkit-filter: blur(7px) brightness(.85)
-    z-index: 0
-    /*-webkit-transform: translate3d(0px,0px,0px)*/
-
-  #crisp
-    z-index: 1
-    -webkit-transform: translate3d(0px,0px,0px)
-
-  .width
-    width: calc( 100% + 40px )
-    height: auto
-
-  .height
-    height: calc( 100% + 40px )
-    width: auto
-
-  #header_wrapper
-    position: relative
-    height: 50%
-    width: 100%
-    overflow: hidden
-    background-color: cadetblue
-
-  #header_container_text
-    position: absolute
-    width: 100%
-    height: 100%
-    bottom: 0px
-    opacity: 1
-    -webkit-transform: translate3d(0,0,0)
-    z-index: 2
-
   #content
     position: relative
     margin-left: 385px
@@ -59,76 +16,11 @@
     color: #333333
     word-wrap: break-word
 
-  blockquote
-    border-left: 5px solid #4197e2
-    font-style: italic
-    padding-left: 25px
-    margin: 0px
-    margin-top: 20px
-    margin-bottom: 20px
-
-  $font-headers: "Helvetica Neue", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans",Geneva, Verdana, sans-serif
-  h3
-    font-family: $font-headers
-    font-size: 35px
-    font-weight: bold
-    margin-bottom: 10px
-    margin-top: 50px
-    color: #333333
-
-  h4
-    font-family: $font-headers
-    font-weight: lighter
-    font-size: 35px
-    color: #777777
-    margin-bottom: 10px
-
-  #sidebar
-    float: left
-    width: 325px
-
-  #post_height
-    position: relative
-    max-width: 800px
-    top: 50%
-    width: 60%
-    transform: translateY(-50%)
-    -webkit-transform: translateY(-50%)
-    margin-left: 385px
-
-  #mc_embed_signup
-    width: 100%
-    height: 120px
-    margin-bottom: 50px
-    margin-top: 50px
-    background: #fff
-    float: left
-    font-size: 16px
-
-  #mc_embed_signup .email
-    height: 26px
-    border: 4px solid #f4f4f4
-    padding-left: 15px
-
-  #mc_embed_signup .email:focus
-    height: 26px
-    border: 4px solid #a8d2ff
-    padding-left: 15px
-
   .white
     background-color: #fff
     margin-top: 0px
     margin-left: 20px
     height: 36px
-
-  .left
-    float: left
-
-  #mc-embedded-subscribe-form
-    padding: 0px
-    margin-top: 10px
-    margin-bottom: 10px
-    color: black
 
   /* >>>> Image Display Options <<<< */
 
@@ -144,10 +36,6 @@
     margin: 20px 0px 20px 20px
     max-width: 100%
 
-  h1
-    font-size: 55px
-    margin: 0px
-
   .img-center
     display: block
     margin-left: auto
@@ -160,12 +48,3 @@
     width: 100%
     margin-top: 20px
     margin-bottom: 20px
-
-#disqus_thread
-  margin-top: 100px
-
-#updated_post
-  width: 100%
-  margin-bottom: 20px
-  color: #aaaaaa
-  font-style: italic
