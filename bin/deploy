@@ -10,7 +10,7 @@ cd $targetfolder
 
 # Load the production vars into environment
 # Temporary
--export $(grep -v '^#' .env.prod | xargs)
+export $(grep -v '^#' .env.prod | xargs)
 
 # Build new image
 # TODO: Move build to CI and reference from registry
